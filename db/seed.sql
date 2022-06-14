@@ -1,0 +1,95 @@
+-- users dummy data
+-- password123
+INSERT INTO users (name, email, password_hash, username, photo_path, location, ideal_size, instagram)
+VALUES (
+    'Brock Example',
+    'bob@example.com',
+    '$2b$12$H4kyXALZeuxc11pF.9I7S.waEmGTdtFJfffiX4K7pOKeXTAbay3/.',
+    'Brock_shoes'
+    'https://images.pexels.com/photos/6898854/pexels-photo-6898854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    'Melbourne',
+    10,
+    'https://www.instagram.com/'
+);
+-- password456
+INSERT INTO users (name, email, password_hash, username, photo_path, location, ideal_size, instagram)
+VALUES (
+    'Tolga Example',
+    'tolga@example.com',
+    '$2b$12$/oygWGX8k6K8iplJnR4Gh.OdPEYK8LllH6zabMklQaJNIOsV9nEUe',
+    'Tolga_sneakers'
+    'https://images.pexels.com/photos/6923731/pexels-photo-6923731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    'Sydney',
+    11,
+    'https://www.instagram.com/'
+);
+-- password000
+INSERT INTO users (name, email, password_hash, username, photo_path, location, ideal_size, instagram)
+VALUES (
+    'Joash Example',
+    'rick@example.com',
+    '$2b$12$UlH7q.ty83TzSoTj1v64zeTUqmmAIjzBcdeztHxuC3daZwbHghNRW',
+    'joash123'
+    'https://images.pexels.com/photos/333523/pexels-photo-333523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    'Adelaide',
+    10,
+    'https://www.instagram.com/'
+);
+-- sneakers dummy data
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, user_id)
+VALUES (
+    'Nike Air Max 95 OG Neon',
+    'Cool nikes with great traction',
+    'Nike Melbourne',
+    11,
+    'display',
+    'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1631629853-screenshot-2021-09-14-at-15-29-15-1631629801.png?crop=0.684xw:0.842xh;0.131xw,0.0651xh&resize=768:*',
+    'excellent',
+    2
+);
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, user_id)
+VALUES (
+    'Adidas Yeezy 350 Version 1 Turtle Doves',
+    'addidas with turtles',
+    'https://www.adidas.com.au/',
+    10,
+    'for sale',
+    'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1631629853-screenshot-2021-09-14-at-15-29-15-1631629801.png?crop=0.684xw:0.842xh;0.131xw,0.0651xh&resize=768:*',
+    'great',
+    1
+);
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, user_id)
+VALUES (
+    'Nike Waffle x Sacai',
+    'Cool nikes with striking colours',
+    'ebay.co.uk',
+    10,
+    'display',
+    'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1631627063-ldwaffle-bv0073-400-blue-1-1000x1000-1631627029.jpg?crop=1xw:1xh;center,top&resize=768:*',
+    'excellent',
+    2
+);
+INSERT INTO listings (sneaker_id, user_id, listing_date, location, selling_price)
+VALUES (
+    1,
+    2,
+    '14-06-2022',
+    'Melbourne',
+    1300
+);
+INSERT INTO listings (sneaker_id, user_id, listing_date, location, selling_price)
+VALUES (
+    2,
+    1,
+    '14-06-2022',
+    'Sydney',
+    1100
+);
+INSERT INTO listings (sneaker_id, user_id, listing_date, location, selling_price)
+VALUES (
+    2,
+    3,
+    '14-06-2022',
+    'Sydney',
+    1000
+);
