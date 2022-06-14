@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SneakerJTB</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <section class="log-in">
+        <h1>SneakerJTB</h1>
+        <form id="log-in-form">
+            <section id="errors"></section>
+            <fieldset>
+                <label for="">Email:</label><br>
+                <input type="text" name="email">
+            </fieldset>
+            <fieldset>
+                <label for="">Password: </label><br>
+                <input type="password" name="password">
+            </fieldset>
+            <button>Log in</button>
+        </form>
+    </section>
+
+    <script>
+        let form = document.getElementById('log-in-form')
+        form.addEventListener('submit', (event) => {
+            event.preventDefault()
+            const formData = new FormData(form)
+            const data = {
+                email: formData.get('email'),
+                password: formData.get('password')
+            }
+
+            axios.post('/api/session', data)
+            .then((response) => {
+                console.log(response)
+                window.location = '/'
+            })
+        })
+    </script>
+</body>
+</html>
