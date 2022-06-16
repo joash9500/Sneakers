@@ -15,7 +15,6 @@ CREATE TABLE users (
     ideal_size INT,
     instagram VARCHAR(255)
 );
-
 CREATE TABLE sneakers (
     id serial PRIMARY KEY,
     name VARCHAR(50),
