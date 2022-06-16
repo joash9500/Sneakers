@@ -1,6 +1,4 @@
 {
-<<<<<<< branch-start
-=======
   "name": "sneakers",
   "version": "1.0.0",
   "description": "personal sneaker catalog - either private or public. All kinds of niche, limited release sneakers. Could include a marketplace.",
@@ -19,7 +17,6 @@
     "url": "https://github.com/joash9500/sneakers/issues"
   },
   "homepage": "https://github.com/joash9500/sneakers#readme",
->>>>>>> main
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-pg-simple": "^7.0.0",
