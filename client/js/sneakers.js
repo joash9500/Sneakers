@@ -5,4 +5,4 @@ function renderSneakers() {
             const sneakers = response.data;
 
         })
-}
+} 
