@@ -1,17 +1,32 @@
 {
+<<<<<<< branch-start
+=======
+  "name": "sneakers",
+  "version": "1.0.0",
+  "description": "personal sneaker catalog - either private or public. All kinds of niche, limited release sneakers. Could include a marketplace.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joash9500/sneakers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joash9500/sneakers/issues"
+  },
+  "homepage": "https://github.com/joash9500/sneakers#readme",
+>>>>>>> main
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-pg-simple": "^7.0.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "express-session": "^1.17.3"
-  },
-  "devDependencies": {
-    "jest": "^28.1.1",
-    "nodemon": "^2.0.16"
-  },
-  "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "express-session": "^1.17.3",
+    "pg": "^8.7.3"
+
   }
 }
