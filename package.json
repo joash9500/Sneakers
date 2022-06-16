@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-pg-simple": "^7.0.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3"
+  },
+  "devDependencies": {
+    "jest": "^28.1.1",
+    "nodemon": "^2.0.16"
+  },
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
