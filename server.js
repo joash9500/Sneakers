@@ -26,6 +26,7 @@ app.use(express.json())
 
 // Logging Middleware
 app.use((req, res, next) => {
+  console.log(`I am middleware! Request ${req.path}`)
   next()
 })
 
@@ -38,7 +39,7 @@ app.use('/', sneakersRouter)
 
 app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Some error occured!!' })
-  next()
+  next(err)
 })
 
 // start the web server
