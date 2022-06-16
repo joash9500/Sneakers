@@ -36,10 +36,10 @@ app.use('/', sessionRouter)
 app.use('/', sneakersRouter)
 
 
-app.use((err, req, res, next) => {
-  res.status(500).json({ message: 'Some error occured!!' })
-  next()
-})
+// app.use((err, req, res, next) => {
+//   res.status(500).json({ message: 'Some error occured!!' })
+//   next()
+// })
 
 // start the web server
 app.listen(port, () => {
