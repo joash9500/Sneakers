@@ -1,0 +1,6 @@
+npm install bcrypt
+npm install express
+npm install -g nodemon
+npm install --save-dev nodemon
+npm install dotenv express-session connect-pg-simple --save
+npm install jest --save-dev
