@@ -1,4 +1,8 @@
-DROP TABLE IF EXISTS users, sneakers, listings;
+
+CREATE DATABASE sneakers_db;
+DROP TABLE IF EXISTS listings CASCADE;
+DROP TABLE IF EXISTS sneakers CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users (
     id serial PRIMARY KEY,
@@ -21,13 +25,15 @@ CREATE TABLE sneakers (
     type VARCHAR(50),
     image_path VARCHAR(255),
     condition VARCHAR(50),
-    user_id INT REFERENCES users(id)
+    users_id INT REFERENCES users(id)
 );
+
 CREATE TABLE listings (
     id serial PRIMARY KEY,
     sneaker_id INT REFERENCES sneakers(id),
-    user_id INT REFERENCES users(id),
+    users_id INT REFERENCES users(id),
     listing_date DATE,
     location VARCHAR(255),
     selling_price INT
 );
+
