@@ -15,7 +15,7 @@ const sessionRouter = require('./controllers/session')
 
 app.use(expressSession({
   store: new pgSession({
-      pool: sneakers,
+      pool: db,
       createTableIfMissing: true,
   }),
   secret: process.env.EXPRESS_SESSION_SECRET_KEY,    
