@@ -4,7 +4,6 @@ const db = require('../db/db')
 
 const router = express.Router()
 
-
 router.get('/api/sneakers', (req, res) => {
     const sql = "SELECT * FROM sneakers"
     db.query(sql).then((dbResult) => {
