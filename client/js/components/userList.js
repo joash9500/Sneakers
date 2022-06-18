@@ -18,9 +18,7 @@ function renderUsers() {
             const userPhoto = document.createElement('img')
             userPhoto.src = elm.photo_path
             
-            // htmlContent.appendChild(userName)
             htmlContent.append(userName, userPhoto, userLocation, userSize)
-            // htmlContent.append(userName, userLocation, userSize, userPhoto)
         })
 
     })

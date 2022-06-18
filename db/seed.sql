@@ -99,9 +99,10 @@ VALUES (
 
 INSERT INTO listings (sneaker_id, users_id, listing_date, location, selling_price) 
 VALUES (
-    2,
+    3,
     3,
     '2022-06-14',
     'Sydney',
     1000
 );
+
