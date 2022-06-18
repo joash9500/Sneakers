@@ -3,15 +3,52 @@
 function renderFilter() {
     console.log('running')
     const filterMenu = document.querySelector('#side-bar')
+    const searchForm = document.createElement('form')
+    const filterForm  = document.createElement('form')
     filterMenu.style.display = 'inline-block'
-    filterMenu.innerHTML = `
-        <button onclick="" class="dropdown-brands">Brands</button>
-        <ul id="filters">
-            <li id="nike">Nike</li>
-            <li id="addidas">Addidas</li>
-            <button></button>
-        </ul>
+    searchForm.innerHTML = `
+        <label for="search"></label><br>
+        <input type="text" name="name" placeholder="search"> 
+        <button>Search</button> 
     `
+    filterForm.innerHTML = `
+    <br> Brand: <br>
+    <label for="brand">Nike</label>
+    <input type="checkbox" name="nike"><br> 
+    <label for="brand">adidas</label>
+    <input type="checkbox" name="adidas"><br>
+    <label for="brand">Puma</label>
+    <input type="checkbox" name="puma"><br>
+    <label for="brand">Balenciaga</label>
+    <input type="checkbox" name="balenciaga"><br>
+    <label for="brand">New Balance</label>
+    <input type="checkbox" name="new-balance"><br><br>
+    Popular:<br>
+    <label for="popular">Air Jordan</label>
+    <input type="checkbox" name="air-jordan"><br>
+    <label for="popular">Yeezy</label>
+    <input type="checkbox" name="Yeezy"><br>
+    <label for="popular">Air Max</label>
+    <input type="checkbox" name="air-max"><br><br>
+    Condition: <br>
+    <label for="condition">Like New</label>
+    <input type="checkbox" name="Like-New"><br> 
+    <label for="condition">Excellent</label>
+    <input type="checkbox" name="excellent"><br> 
+    <label for="condition">Good</label>
+    <input type="checkbox" name="Good"><br> 
+    <label for="condition">Fair</label>
+    <input type="checkbox" name="fair"><br> <br>
+    Size:
+    <label for="size"></label>
+    <input type="range" id="send" min="0" max="15" step='0.5' oninput="result.value = send.value"name="size"><br> 
+    <input type="text" id="result" value=""> <br> <br>
+    <button>Filter</button> 
+    <label for="clear"></label>
+    <input type="reset" value="Clear" name="clear"><br> 
+    `
+    filterMenu.appendChild(searchForm)
+    filterMenu.appendChild(filterForm)
 }
 
 function renderSneakers() {
@@ -36,9 +73,9 @@ function renderSneakers() {
             <img src="${sneakers[index].image_path}">
             Condition: ${sneakers[index].condition}
             `
-            page.appendChild(sneakerItem)
+                page.appendChild(sneakerItem)
             }
-            
+
         });
 
 }
@@ -79,7 +116,7 @@ function renderAddSneakerForm() {
     form.addEventListener('submit', event => {
         event.preventDefault()
         const formData = new FormData(form)
-        
+
         const sneakerData = {
             name: formData.get("name"),
             description: formData.get("description"),
