@@ -39,4 +39,42 @@ router.post('/api/users', (req, res) => {
 
 })
 
+//delete users via user_id
+router.delete('/api/users/:id', (req, res) => {
+
+    let user_id = req.params.id
+    const sql = 'DELETE FROM users WHERE id = $1'
+    db.query(sql, [user_id]).then((dbResult) => {
+        res.json({"response" : "success"})
+    })
+})
+
+router.put('/api/users/:id', (req, res) => {
+    
+
+    const sql = 'UPDATE users SET name = $1, email = $2, username = $3, photo_path = $4, location = $5, ideal_size = $6, instagram = $7 WHERE id = $8'
+    let name = req.body.name //$1
+    let email = req.body.email //$2
+    let username = req.body.username //$3
+    let photo_path = req.body.photo //$4
+    let location = req.body.loc //$5
+    let ideal_size = req.body.size //$6
+    let instagram = req.body.insta //$7
+
+    let user_id = req.params.id //$8
+
+    db.query(sql, [name, email, username, photo_path, location, ideal_size, instagram, user_id]).then((result) => {
+        res.json({message: "success"})
+    })
+
+})
+
 module.exports = router
+
+// email: email,
+// name: name,
+// username: username,
+// size: shoeSize,
+// loc: location,
+// photo: photo,
+// insta: instagram

@@ -24,13 +24,13 @@ CREATE TABLE sneakers (
     type VARCHAR(50),
     image_path VARCHAR(255),
     condition VARCHAR(50),
-    users_id INT REFERENCES users(id)
+    users_id INT REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE listings (
     id serial PRIMARY KEY,
-    sneaker_id INT REFERENCES sneakers(id),
-    users_id INT REFERENCES users(id),
+    sneaker_id INT REFERENCES sneakers(id) ON DELETE CASCADE,
+    users_id INT REFERENCES users(id) ON DELETE CASCADE,
     listing_date DATE,
     location VARCHAR(255),
     selling_price INT
