@@ -1,9 +1,22 @@
 // renders all sneakers on homepage
 
+function renderFilter() {
+    console.log('running')
+    const filterMenu = document.querySelector('#side-bar')
+    filterMenu.style.display = 'inline-block'
+    filterMenu.innerHTML = `
+        <button onclick="" class="dropdown-brands">Brands</button>
+        <ul id="filters">
+            <li id="nike">Nike</li>
+            <li id="addidas">Addidas</li>
+            <button></button>
+        </ul>
+    `
+}
+
 function renderSneakers() {
 
-    renderFilterForm() //run function to generate a filter form on the side bar
-
+    renderFilter() //run function to generate a filter form on the side bar
     axios
         .get("/api/sneakers")
         .then((response) => {
@@ -28,18 +41,5 @@ function renderSneakers() {
             }
             
         });
-
-}
-
-function renderFilterForm() {
-    console.log('running')
-
-    const filterForm = document.querySelector('#side-bar')
-    filterForm.style.display = 'inline-block'
-    filterForm.innerHTML = `
-        
-    
-    `
-
 
 }
