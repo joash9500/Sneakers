@@ -1,6 +1,9 @@
 // renders all sneakers on homepage
 
 function renderSneakers() {
+
+    renderFilterForm() //run function to generate a filter form on the side bar
+
     axios
         .get("/api/sneakers")
         .then((response) => {
@@ -20,12 +23,23 @@ function renderSneakers() {
             Type: ${sneakers[index].type}
             <img src="${sneakers[index].image_path}">
             Condition: ${sneakers[index].condition}
-            Listing Date: ${sneakers[index].listing_date}
-            Location: ${sneakers[index].location}
-            Selling Price: $${sneakers[index].selling_price}
             `
             page.appendChild(sneakerItem)
             }
+            
         });
+
+}
+
+function renderFilterForm() {
+    console.log('running')
+
+    const filterForm = document.querySelector('#side-bar')
+    filterForm.style.display = 'inline-block'
+    filterForm.innerHTML = `
+        
+    
+    `
+
 
 }
