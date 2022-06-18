@@ -12,6 +12,7 @@ const db = require('./db/db')
 const sneakersRouter = require('./controllers/sneakers')
 const usersRouter = require('./controllers/users')
 const sessionRouter = require('./controllers/session')
+const listingsRouter =  require('./controllers/listings')
 
 app.use(expressSession({
   store: new pgSession({
@@ -36,6 +37,7 @@ app.use('/', sessionRouter)
 
 app.use('/', sneakersRouter)
 
+app.use('/', listingsRouter)
 
 app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Some error occured!!' })

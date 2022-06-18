@@ -4,7 +4,7 @@ const db = require('../db/db')
 
 const router = express.Router()
 
-router.get('/api/sneakers', (req, res) => {
+router.get('/api/listings', (req, res) => {
     const sql = "SELECT * FROM listings JOIN sneakers ON listings.sneaker_id = sneakers.id;"
     db.query(sql).then((dbResult) => {
 

@@ -1,3 +1,5 @@
+// renders all sneakers on homepage
+
 function renderSneakers() {
     axios
         .get("/api/sneakers")
@@ -5,6 +7,7 @@ function renderSneakers() {
             const sneakers = response.data;
             console.log(sneakers)
             page = document.getElementById('content')
+            page.innerHTML = ''
             for (index in sneakers) {
                 const sneakerItem = document.createElement('div')
                 sneakerItem.innerHTML =
@@ -16,8 +19,12 @@ function renderSneakers() {
             Size: ${sneakers[index].size}
             Type: ${sneakers[index].type}
             <img src="${sneakers[index].image_path}">
+            Condition: ${sneakers[index].condition}
+            Listing Date: ${sneakers[index].listing_date}
+            Location: ${sneakers[index].location}
+            Selling Price: $${sneakers[index].selling_price}
             `
-                page.appendChild(sneakerItem)
+            page.appendChild(sneakerItem)
             }
         });
 
