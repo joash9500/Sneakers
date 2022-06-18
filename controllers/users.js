@@ -39,4 +39,15 @@ router.post('/api/users', (req, res) => {
 
 })
 
+//delete users via user_id
+router.delete('/api/users/:id', (req, res) => {
+
+    let user_id = req.params.id
+    console.log('router delete is running', 'id is '+user_id)
+    const sql = 'DELETE FROM users WHERE id = $1'
+    db.query(sql, [user_id]).then((dbResult) => {
+        res.json({"response" : "success"})
+    })
+})
+
 module.exports = router

@@ -17,9 +17,25 @@ function renderUsers() {
             userSize.innerText = 'Ideal shoe size: ' + elm.ideal_size
             const userPhoto = document.createElement('img')
             userPhoto.src = elm.photo_path
-            
-            htmlContent.append(userName, userPhoto, userLocation, userSize)
+
+            //delete user button
+            const deleteUserButton = document.createElement('button')
+            deleteUserButton.innerText = 'Delete User'
+            deleteUserButton.addEventListener('click', () => {
+                deleteUsers(elm.id)
+            })
+
+            htmlContent.append(userName, userPhoto, userLocation, userSize, deleteUserButton)
         })
 
+    })
+}
+
+//add users is not required as this is achieved via a sign up form 'signup.js'
+
+//function to delete users via their user id
+function deleteUsers(id) {
+    axios.delete(`/api/users/${id}`).then((resp) => {
+        renderUsers()
     })
 }
