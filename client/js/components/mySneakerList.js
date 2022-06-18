@@ -7,6 +7,7 @@ function renderMySneakers() {
         console.log(sneakers)
         console.log(sneakers[1]['users_id']);
         page = document.getElementById('content')
+        page.innerHTML = ''
         for(let shoe of sneakers) {
             console.log(shoe);
             console.log(shoe['users_id']);
@@ -22,7 +23,7 @@ function renderMySneakers() {
                 Type: ${shoe.type}
                 <img src="${shoe.image_path}">
                 `
-                    page.appendChild(sneakerItem)
+                page.appendChild(sneakerItem)
                 }
             }
         })

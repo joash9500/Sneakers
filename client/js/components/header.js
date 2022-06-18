@@ -3,6 +3,7 @@ function renderHeader() {
     headerNode.innerHTML = `
     <ul id="navbar">
         <li onClick = "renderSneakers()">All Sneakers</li>
+        <li onClick = "renderListings()">All Listings</li>
         <li onClick = "renderMySneakers()">My Sneakers</li>
         <li onClick = "renderUsers()">Users</li>
         <li onClick = "renderLogin()">Login</li>
