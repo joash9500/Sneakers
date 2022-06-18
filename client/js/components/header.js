@@ -8,6 +8,7 @@ function renderHeader() {
         <li onClick = "renderUsers()">Users</li>
         <li onClick = "renderLogin()">Login</li>
         <li onClick = "renderSignup()">Signup</li>
+        <li onClick = "renderAddSneakerForm()">Add an Item</li>
     </ul>
     <div id="log-status">
         <a id="log-in" href="/login.html"><button>Login</button></a>
