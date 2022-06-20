@@ -12,40 +12,42 @@ function renderFilter() {
         <button>Search</button> 
     `
     filterForm.innerHTML = `
-    <br> Brand: <br>
-    <label for="brand">Nike</label>
-    <input type="checkbox" name="nike"><br> 
-    <label for="brand">adidas</label>
-    <input type="checkbox" name="adidas"><br>
-    <label for="brand">Puma</label>
-    <input type="checkbox" name="puma"><br>
-    <label for="brand">Balenciaga</label>
-    <input type="checkbox" name="balenciaga"><br>
-    <label for="brand">New Balance</label>
-    <input type="checkbox" name="new-balance"><br><br>
-    Popular:<br>
-    <label for="popular">Air Jordan</label>
-    <input type="checkbox" name="air-jordan"><br>
-    <label for="popular">Yeezy</label>
-    <input type="checkbox" name="Yeezy"><br>
-    <label for="popular">Air Max</label>
-    <input type="checkbox" name="air-max"><br><br>
-    Condition: <br>
-    <label for="condition">Like New</label>
-    <input type="checkbox" name="Like-New"><br> 
-    <label for="condition">Excellent</label>
-    <input type="checkbox" name="excellent"><br> 
-    <label for="condition">Good</label>
-    <input type="checkbox" name="Good"><br> 
-    <label for="condition">Fair</label>
-    <input type="checkbox" name="fair"><br> <br>
-    Size:
-    <label for="size"></label>
-    <input type="range" id="send" min="0" max="15" step='0.5' oninput="result.value = send.value"name="size"><br> 
-    <input type="text" id="result" value=""> <br> <br>
-    <button>Filter</button> 
-    <label for="clear"></label>
-    <input type="reset" value="Clear" name="clear"><br> 
+    <div class="col-sm-3">
+        <br> Brand: <br>
+        <label for="brand">Nike</label>
+        <input type="checkbox" name="nike"><br> 
+        <label for="brand">adidas</label>
+        <input type="checkbox" name="adidas"><br>
+        <label for="brand">Puma</label>
+        <input type="checkbox" name="puma"><br>
+        <label for="brand">Balenciaga</label>
+        <input type="checkbox" name="balenciaga"><br>
+        <label for="brand">New Balance</label>
+        <input type="checkbox" name="new-balance"><br><br>
+        Popular:<br>
+        <label for="popular">Air Jordan</label>
+        <input type="checkbox" name="air-jordan"><br>
+        <label for="popular">Yeezy</label>
+        <input type="checkbox" name="Yeezy"><br>
+        <label for="popular">Air Max</label>
+        <input type="checkbox" name="air-max"><br><br>
+        Condition: <br>
+        <label for="condition">Like New</label>
+        <input type="checkbox" name="Like-New"><br> 
+        <label for="condition">Excellent</label>
+        <input type="checkbox" name="excellent"><br> 
+        <label for="condition">Good</label>
+        <input type="checkbox" name="Good"><br> 
+        <label for="condition">Fair</label>
+        <input type="checkbox" name="fair"><br> <br>
+        Size:
+        <label for="size"></label>
+        <input type="range" id="send" min="0" max="15" step='0.5' oninput="result.value = send.value"name="size"><br> 
+        <input type="text" id="result" value=""> <br> <br>
+        <button>Filter</button> 
+        <label for="clear"></label>
+        <input type="reset" value="Clear" name="clear"><br>
+    </div>
     `
     filterMenu.appendChild(searchForm)
     filterMenu.appendChild(filterForm)
@@ -64,14 +66,18 @@ function renderSneakers() {
                 const sneakerItem = document.createElement('div')
                 sneakerItem.innerHTML =
                     `
-            Name: ${sneakers[index].name}
-            Description: ${sneakers[index].description}
-            Brand: ${sneakers[index].brand}
-            Purchase Place: ${sneakers[index].purchase_place}
-            Size: ${sneakers[index].size}
-            Type: ${sneakers[index].type}
-            <img src="${sneakers[index].image_path}">
-            Condition: ${sneakers[index].condition}
+            <div class="card" style="width: 25rem">
+                    <img class="card-img-top" src="${sneakers[index].image_path}">
+                <div class="card-body">
+                <h5 class="card-title">${sneakers[index].name}</h5>
+                    <p><strong>Description:</strong> ${sneakers[index].description}</p>
+                    <p><strong>Brand:</strong> ${sneakers[index].brand}</p>
+                    <p><strong>Purchase Place:</strong> ${sneakers[index].purchase_place}</p>
+                    <p><strong>Size:</strong> ${sneakers[index].size}</p>
+                    <p><strong>Type:</strong> ${sneakers[index].type}</p>
+                    <p><strong>Condition:</strong> ${sneakers[index].condition}</p>
+                </div>
+            </div>
             `
                 page.appendChild(sneakerItem)
             }
