@@ -53,6 +53,7 @@ function editUsers(id) {
     const htmlContent = document.getElementById('content')
     const updateForm = document.createElement('form')
     updateForm.innerHTML = `
+        <h1>Update User</h1>
         <label for="email">Email: </label>
         <input type="email" name="email"><br>
         <label for="name">New Name: </label>
@@ -92,11 +93,20 @@ function editUsers(id) {
             photo: photo,
             insta: instagram
         }).then((result) => {
+            console.log(result)
             renderUsers()
-        }).catch((err) => {
-            console.log(err)
+        }).catch((error) => {
+            console.log(error.response.data.message)
+            const status = error.response.status
+            const msg = document.createElement('p')
+            if (status == 400) {
+                msg.innerText = 'Please fill in all input fields when updating user'
+               
+            } else if (status == 500) {
+                msg.innerText = 'Something went wrong with the server. Try again later'
+            }
+            htmlContent.appendChild(msg)
         })
-
     })
 
 }
