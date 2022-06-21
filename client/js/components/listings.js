@@ -12,18 +12,22 @@ function renderListings() {
                 const sneakerItem = document.createElement('div')
                 sneakerItem.innerHTML =
                     `
-            Name: ${listings[index].name}
-            Description: ${listings[index].description}
-            Brand: ${listings[index].brand}
-            Purchase Place: ${listings[index].purchase_place}
-            Size: ${listings[index].size}
-            Type: ${listings[index].type}
-            <img src="${listings[index].image_path}">
-            Condition: ${listings[index].condition}
-            Listing Date: ${listings[index].listing_date}
-            Location: ${listings[index].location}
-            Selling Price: $${listings[index].selling_price}
-            `
+            <div class="card" style="width: 25rem">
+                    <img class="card-img-top" src="${listings[index].image_path}">
+                <div class="card-body">
+                    <h5 class="card-title">${listings[index].name}</h5>
+                    <p><strong>Description:</strong> ${listings[index].description}</p>
+                    <p><strong>Brand:</strong> ${listings[index].brand}</p>
+                    <p><strong>Purchase Place:</strong> ${listings[index].purchase_place}</p>
+                    <p><strong>Size:</strong> ${listings[index].size}</p>
+                    <p><strong>Type:</strong> ${listings[index].type}</p>
+                    <p><strong>Condition:</strong> ${listings[index].condition}</p>
+                    <p><strong>Listing Date:</strong> ${listings[index].listing_date}</p>
+                    <p><strong>Location:</strong> ${listings[index].location}</p>
+                    <p><strong>Selling Price:</strong> $${listings[index].selling_price}</p>
+                    </div>
+                </div>
+                `
             page.appendChild(sneakerItem)
             }
         });
