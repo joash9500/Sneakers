@@ -26,8 +26,8 @@ function renderLogin() {
 
         axios.post('/api/session', data)
         .then((response) => {
-            console.log(response)
-            window.location = '/'
+            console.log(response.data.session)
+            window.location = '/' //console log above won't work if window.location is active. commentn this line out if you wnat to see what the response is
         })
 
     })

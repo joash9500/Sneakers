@@ -1,36 +1,37 @@
 function renderMySneakers() {
-    console.log('mySneakers page is rendeirng')
-    axios
-    .get("/api/sneakers")
+    console.log('mySneakers page is rendering')
+    page = document.getElementById('content')
+    axios.get('/api/session')
     .then((response) => {
-        const sneakers = response.data;
-        console.log(sneakers)
-        console.log(sneakers[1]['users_id']);
-        page = document.getElementById('content')
         page.innerHTML = ''
-        for(let shoe of sneakers) {
-            console.log(shoe);
-            console.log(shoe['users_id']);
-            if(shoe['users_id'] === 2) {
+        const userData = response.data; //get session data 
+        // console.log(userData.email, userData.id, userData.name)
+        const user_id = userData.id
+        axios.get(`/api/sneakers/${user_id}`)
+        .then((response) => {
+            // console.log(response.data)
+            const userSneakerData = response.data //returns an array of sneaker objects
+            for (const sneaker of userSneakerData) {
                 const sneakerItem = document.createElement('div')
                 sneakerItem.innerHTML =
-                        `
-                <div class="card" style="width: 25rem">
-                        <img class="card-img-top" src="${shoe.image_path}">
+                    `
+                    <div class="card" style="width: 25rem">
+                    <img class="card-img-top" src="${sneaker.image_path}">
                     <div class="card-body">
-                    <h5 class="card-title">${shoe.name}</h5>
-                        <p><strong>Description:</strong> ${shoe.description}</p>
-                        <p><strong>Brand:</strong> ${shoe.brand}</p>
-                        <p><strong>Purchase Place:</strong> ${shoe.purchase_place}</p>
-                        <p><strong>Size:</strong> ${shoe.size}</p>
-                        <p><strong>Type:</strong> ${shoe.type}</p>
+                    <h5 class="card-title">${sneaker.name}</h5>
+                    <p><strong>Description:</strong> ${sneaker.description}</p>
+                    <p><strong>Brand:</strong> ${sneaker.brand}</p>
+                    <p><strong>Purchase Place:</strong> ${sneaker.purchase_place}</p>
+                    <p><strong>Size:</strong> ${sneaker.size}</p>
+                    <p><strong>Type:</strong> ${sneaker.type}</p>
+                    <p><strong>Condition:</strong> ${sneaker.condition}</p>
                     </div>
-                </div>
-                `
-                page.appendChild(sneakerItem)
-                }
+                    `
+                    page.appendChild(sneakerItem)
             }
         })
-    }
+        
+    })
+}
 
     
