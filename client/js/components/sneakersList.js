@@ -8,9 +8,19 @@ function renderFilter() {
     filterMenu.style.display = 'inline-block'
     searchForm.innerHTML = `
         <label for="search"></label><br>
-        <input type="text" name="name" placeholder="search"> 
+        <input type="text" name="search" placeholder="search"> 
         <button>Search</button> 
     `
+    // makes request to filter options on click 
+    searchForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        const formData = new FormData(searchForm)
+        let search = formData.get('search')
+
+        axios.get(/api/sneakers, {
+            search
+        })
+})
     filterForm.innerHTML = `
     <br> Brand: <br>
     <label for="brand">Nike</label>
