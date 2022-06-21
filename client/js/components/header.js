@@ -7,33 +7,38 @@ function renderHeader() {
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-        <li class="nav-item active" onClick = "renderSneakers()">
-            <a class="nav-link" href="#">All Sneakers</a>
-        </li>
-        <li class="nav-item" onClick = "renderListings()">
-            <a class="nav-link" href="#">All Listings</a>
-        </li>
-        <li class="nav-item" onClick = "renderMySneakers()">
-            <a class="nav-link" href="#" id="my-sneakers" style="display: none">My Sneakers</a>
-        </li>
-        <li class="nav-item" onClick = "renderUsers()">
-            <a class="nav-link" href="#">Users</a>
-        </li>
-        <li class="nav-item" onClick = "renderAddSneakerForm()">
-            <a class="nav-link" href="#" id="add-item" style="display: none">Add an Item</a>
-        </li>
-        <li class="nav-item" onClick = "renderSignup()">
-            <a class="nav-link" href="#" id ="signup">Signup</a>
-        </li>
-        <li class="nav-item" onClick = "renderLogin()">
-            <a class="nav-link" href="#" id="log-in">Login</a>
-        </li>
-        <li class="nav-item">
-            <p id="user" style="display: none">Logged in as <span></span></p>
-            <button id="log-out" style="display: none">Logout</button>
-        </li>
- 
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" onClick = "renderSneakers()">
+                <a class="nav-link" href="#">All Sneakers</a>
+            </li>
+            <li class="nav-item" onClick = "renderListings()">
+                <a class="nav-link" href="#">All Listings</a>
+            </li>
+            <li class="nav-item" onClick = "renderMySneakers()">
+                <a class="nav-link" href="#" id="my-sneakers" style="display: none">My Sneakers</a>
+            </li>
+            <li class="nav-item" onClick = "renderUsers()">
+                <a class="nav-link" href="#">Users</a>
+            </li>
+            <li class="nav-item" onClick = "renderAddSneakerForm()">
+                <a class="nav-link" href="#" id="add-item" style="display: none">Add an Item</a>
+            </li>
+            <li class="nav-item" onClick = "renderSignup()">
+                <a class="nav-link" href="#" id ="signup">Signup</a>
+            </li>
+            <li class="nav-item" onClick = "renderLogin()">
+                <a class="nav-link" href="#" id="log-in">Login</a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <p id="user" style="display: none">Logged in as <span></span></p>
+                <a class="nav-link" id="log-out" style="display: none" href="#">Logout</a>
+
+            </li>
         </ul>
     </div>
     </nav>
