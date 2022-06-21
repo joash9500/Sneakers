@@ -12,42 +12,120 @@ function renderFilter() {
         <button>Search</button> 
     `
     filterForm.innerHTML = `
-    <div class="col-sm-3">
-        <br> Brand: <br>
-        <label for="brand">Nike</label>
-        <input type="checkbox" name="nike"><br> 
-        <label for="brand">adidas</label>
-        <input type="checkbox" name="adidas"><br>
-        <label for="brand">Puma</label>
-        <input type="checkbox" name="puma"><br>
-        <label for="brand">Balenciaga</label>
-        <input type="checkbox" name="balenciaga"><br>
-        <label for="brand">New Balance</label>
-        <input type="checkbox" name="new-balance"><br><br>
-        Popular:<br>
-        <label for="popular">Air Jordan</label>
-        <input type="checkbox" name="air-jordan"><br>
-        <label for="popular">Yeezy</label>
-        <input type="checkbox" name="Yeezy"><br>
-        <label for="popular">Air Max</label>
-        <input type="checkbox" name="air-max"><br><br>
-        Condition: <br>
-        <label for="condition">Like New</label>
-        <input type="checkbox" name="Like-New"><br> 
-        <label for="condition">Excellent</label>
-        <input type="checkbox" name="excellent"><br> 
-        <label for="condition">Good</label>
-        <input type="checkbox" name="Good"><br> 
-        <label for="condition">Fair</label>
-        <input type="checkbox" name="fair"><br> <br>
-        Size:
-        <label for="size"></label>
-        <input type="range" id="send" min="0" max="15" step='0.5' oninput="result.value = send.value"name="size"><br> 
-        <input type="text" id="result" value=""> <br> <br>
+    <br> Brand: <br>
+    <label for="brand">Nike</label>
+    <input type="checkbox" name="nike" id="nike"><br> 
+    <label for="brand">adidas</label>
+    <input type="checkbox" name="adidas"><br>
+    <label for="brand">Puma</label>
+    <input type="checkbox" name="puma"><br>
+    <label for="brand">Balenciaga</label>
+    <input type="checkbox" name="balenciaga"><br>
+    <label for="brand">New Balance</label>
+    <input type="checkbox" name="new-balance"><br>
+    <br>Popular:<br>
+    <label for="popular">Air Jordan</label>
+    <input type="checkbox" name="air-jordan"><br>
+    <label for="popular">Yeezy</label>
+    <input type="checkbox" name="Yeezy"><br>
+    <label for="popular">Air Max</label>
+    <input type="checkbox" name="air-max"><br><br>
+    Condition: <br>
+    <label for="condition">Like New</label>
+    <input type="checkbox" name="like new"><br> 
+    <label for="condition">Excellent</label>
+    <input type="checkbox" name="excellent"><br> 
+    <label for="condition">Good</label>
+    <input type="checkbox" name="Good"><br> 
+    <label for="condition">Fair</label>
+    <input type="checkbox" name="fair"><br> <br>
+    Size:
+    <label for="size"></label>
+    <input type="range" id="send" min="0" max="15" step='0.5' oninput="result.value = send.value"name="size"><br> 
+    <input type="text" id="result" value=""> <br> <br>
+    <button>Filter</button> 
+    <label for="clear"></label>
+    <input type="reset" value="Clear" name="clear"><br>
+
+
+        <div class="card" style="width: 25rem">
+            <div class="card-body">
+            <h5 class="card-title">Brand</h5>
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="nike" name="nike">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Nike</label>
+            </div>
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="adidas" name="adidas">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Adidas</label>
+            </div>
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="puma" name="puma">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Puma</label>
+            </div>
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="balenciaga" name="balenciaga">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Balenciaga</label>
+            </div>
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="new balance" name="new balance">
+                <label class="form-check-label" for="flexSwitchCheckDefault">New Balance</label>
+            </div>
+            </div>
+        </div>
+
+        <div class="card" style="width: 25rem">
+            <div class="card-body">
+            <h5 class="card-title">Popular</h5>
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="air jordan" name="air jordan">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Air Jordan</label>
+            </div>
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="yeezy" name="yeezy">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Yeezy</label>
+            </div>
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="air max" name="air max">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Air Max</label>
+            </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body" style="width: 25rem">
+            <h5 class="card-title">Condition</h5>
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="like new" name="like new">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Like New</label>
+            </div>
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="excellent" name="excellent">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Excellent</label>
+            </div>
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="good" name="good">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Good</label>
+            </div>
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="fair" name="fair">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Fair</label>
+            </div>
+            </div>
+        </div>
+        
+        <div class="card" style="width: 25rem">
+            <div class="card-body">
+            <h5 class="card-title">Size</h5>
+            <label for="size"></label>
+            <input type="range" id="send" min="0" max="15" step='0.5' oninput="result.value = send.value"name="size"><br> 
+            <input type="text" id="result" value=""> <br> <br>
+            </div>
+        </div>        
         <button>Filter</button> 
         <label for="clear"></label>
         <input type="reset" value="Clear" name="clear"><br>
-    </div>
+
     `
     filterMenu.appendChild(searchForm)
     filterMenu.appendChild(filterForm)
