@@ -53,6 +53,7 @@ function editUsers(id) {
     const htmlContent = document.getElementById('content')
     const updateForm = document.createElement('form')
     updateForm.innerHTML = `
+
             <label for="email">Email: </label>
             <input type="email" name="email"><br>
             <label for="name">New Name: </label>
@@ -69,6 +70,24 @@ function editUsers(id) {
             <input type="url" name="instagram_URL"><br>
             <button type="submit">Save</button>
         
+
+        <h1>Update User</h1>
+        <label for="email">Email: </label>
+        <input type="email" name="email"><br>
+        <label for="name">New Name: </label>
+        <input type="text" name="name"><br>
+        <label for="username">New Username: </label>
+        <input type="text" name="username"><br>
+        <label for="location">New Location: </label>
+        <input type="text" name="location"><br>
+        <label for="shoe_size">Ideal Shoe size: </label>
+        <input type="number" name="shoe_size"><br>
+        <label for="photo_URL">Photo URL: </label>
+        <input type="url" name="photo_URL"><br>
+        <label for="instagram_URL">Instagram URL: </label>
+        <input type="url" name="instagram_URL"><br>
+        <button type="submit">Save</button>
+
     `
     htmlContent.replaceChildren(updateForm)
 
@@ -93,11 +112,20 @@ function editUsers(id) {
             photo: photo,
             insta: instagram
         }).then((result) => {
+            console.log(result)
             renderUsers()
-        }).catch((err) => {
-            console.log(err)
+        }).catch((error) => {
+            console.log(error.response.data.message)
+            const status = error.response.status
+            const msg = document.createElement('p')
+            if (status == 400) {
+                msg.innerText = 'Please fill in all input fields when updating user'
+               
+            } else if (status == 500) {
+                msg.innerText = 'Something went wrong with the server. Try again later'
+            }
+            htmlContent.appendChild(msg)
         })
-
     })
 
 }
