@@ -25,21 +25,21 @@
     </section>
 
     <script>
-        let form = document.getElementById('log-in-form')
-        form.addEventListener('submit', (event) => {
-            event.preventDefault()
-            const formData = new FormData(form)
-            const data = {
-                email: formData.get('email'),
-                password: formData.get('password')
-            }
+        // let form = document.getElementById('log-in-form')
+        // form.addEventListener('submit', (event) => {
+        //     event.preventDefault()
+        //     const formData = new FormData(form)
+        //     const data = {
+        //         email: formData.get('email'),
+        //         password: formData.get('password')
+        //     }
 
-            axios.post('/api/session', data)
-            .then((response) => {
-                console.log(response)
-                window.location = '/'
-            })
-        })
+        //     axios.post('/api/session', data)
+        //     .then((response) => {
+        //         console.log(response)
+        //         window.location = '/'
+        //     })
+        // })
     </script>
 </body>
 </html>
