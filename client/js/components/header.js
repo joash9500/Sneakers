@@ -15,22 +15,25 @@ function renderHeader() {
             <a class="nav-link" href="#">All Listings</a>
         </li>
         <li class="nav-item" onClick = "renderMySneakers()">
-            <a class="nav-link" href="#">My Sneakers</a>
+            <a class="nav-link" href="#" id="my-sneakers" style="display: none">My Sneakers</a>
         </li>
         <li class="nav-item" onClick = "renderUsers()">
             <a class="nav-link" href="#">Users</a>
         </li>
+        <li class="nav-item" onClick = "renderAddSneakerForm()">
+            <a class="nav-link" href="#" id="add-item" style="display: none">Add an Item</a>
+        </li>
+        <li class="nav-item" onClick = "renderSignup()">
+            <a class="nav-link" href="#" id ="signup">Signup</a>
+        </li>
         <li class="nav-item" onClick = "renderLogin()">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href="#" id="log-in">Login</a>
+        </li>
+        <li class="nav-item">
             <p id="user" style="display: none">Logged in as <span></span></p>
             <button id="log-out" style="display: none">Logout</button>
         </li>
-        <li class="nav-item" onClick = "renderSignup()">
-            <a class="nav-link" href="#">Signup</a>
-        </li>
-        <li class="nav-item" onClick = "renderAddSneakerForm()">
-            <a class="nav-link" href="#">Add an Item</a>
-        </li>
+ 
         </ul>
     </div>
     </nav>
@@ -39,6 +42,9 @@ function renderHeader() {
     let loginButton = document.querySelector('#log-in')
     let username = document.querySelector('#user > span')
     let userStatus = document.querySelector('#user')
+    let signupButton = document.querySelector('#signup')
+    let addItemButton = document.querySelector('#add-item')
+    let mySneakersButton = document.querySelector('#my-sneakers')
     
     axios.get('/api/session').then((res) => {
         if (res.data.name == undefined) {
@@ -46,8 +52,11 @@ function renderHeader() {
         } else if (res.data != undefined) {
             userStatus.style.display = 'inline-block' //unhide 'logged in as'
             username.innerText = res.data.name //update the span tag
-            logoutButton.style.display = 'inline-block'
-            loginButton.style.display = 'none'
+            logoutButton.style.display = 'inline-block' //show logout button
+            loginButton.style.display = 'none' //hide login button
+            signupButton.style.display = 'none' //hide signup button
+            addItemButton.style.display = 'inline-block' //show add item button
+            mySneakersButton.style.display = 'inline-block' //show my sneakers button
         } else {
             console.log('something weird happened with api session')
         }
