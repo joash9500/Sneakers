@@ -1,10 +1,10 @@
-// renders all sneakers on homepage
+// renders filter side bar
 
 function renderFilter() {
     console.log('running')
     const filterMenu = document.querySelector('#side-bar')
     const searchForm = document.createElement('form')
-    const filterForm  = document.createElement('form')
+    const filterForm = document.createElement('form')
     filterMenu.style.display = 'inline-block'
     searchForm.innerHTML = `
         <label for="search"></label><br>
@@ -16,31 +16,56 @@ function renderFilter() {
         event.preventDefault()
         const formData = new FormData(searchForm)
         let search = formData.get('search')
-
-        axios.get(/api/sneakers, {
-            search
-        })
-})
+        let searchLowerCase = search.toLowerCase()
+        axios.get('/api/sneakers')
+            .then((response) => {
+                const sneakers = response.data
+                page = document.getElementById('content')
+                page.innerHTML = ''
+                for (index in sneakers) {
+                    let sneakersLowerCase = sneakers[index].name.toLowerCase()
+                    if (sneakersLowerCase.includes(searchLowerCase)) {
+                        const sneakerItem = document.createElement('div')
+                        sneakerItem.innerHTML =
+                            `
+                        <div class="card" style="width: 25rem">
+                        <img class="card-img-top" src="${sneakers[index].image_path}">
+                        <div class="card-body">
+                        <h5 class="card-title">${sneakers[index].name}</h5>
+                        <p><strong>Description:</strong> ${sneakers[index].description}</p>
+                        <p><strong>Brand:</strong> ${sneakers[index].brand}</p>
+                        <p><strong>Purchase Place:</strong> ${sneakers[index].purchase_place}</p>
+                        <p><strong>Size:</strong> ${sneakers[index].size}</p>
+                        <p><strong>Type:</strong> ${sneakers[index].type}</p>
+                        <p><strong>Condition:</strong> ${sneakers[index].condition}</p>
+                        </div>
+                        </div>
+                        `
+                        page.appendChild(sneakerItem)
+                    }
+                }
+            })
+    })
     filterForm.innerHTML = `
     <div class="col-sm-3">
         <br> Brand: <br>
         <label for="brand">Nike</label>
-        <input type="checkbox" name="nike"><br> 
-        <label for="brand">adidas</label>
-        <input type="checkbox" name="adidas"><br>
+        <input type="checkbox" id="nike" name="nike"><br> 
+        <label for="brand">Adidas</label>
+        <input type="checkbox" id="adidas" name="adidas"><br>
         <label for="brand">Puma</label>
-        <input type="checkbox" name="puma"><br>
+        <input type="checkbox" id="puma" name="puma"><br>
         <label for="brand">Balenciaga</label>
-        <input type="checkbox" name="balenciaga"><br>
+        <input type="checkbox" id="balenciaga" name="balenciaga"><br>
         <label for="brand">New Balance</label>
-        <input type="checkbox" name="new-balance"><br><br>
+        <input type="checkbox" id="new balance" name="new balance"><br><br>
         Popular:<br>
         <label for="popular">Air Jordan</label>
-        <input type="checkbox" name="air-jordan"><br>
+        <input type="checkbox" id="air jordan" name="air jordan"><br>
         <label for="popular">Yeezy</label>
-        <input type="checkbox" name="Yeezy"><br>
+        <input type="checkbox" id="yeezy" name="yeezy"><br>
         <label for="popular">Air Max</label>
-        <input type="checkbox" name="air-max"><br><br>
+        <input type="checkbox" id="air max" name="air max"><br><br>
         Condition: <br>
         <label for="condition">Like New</label>
         <input type="checkbox" name="Like-New"><br> 
@@ -59,6 +84,74 @@ function renderFilter() {
         <input type="reset" value="Clear" name="clear"><br>
     </div>
     `
+    filterForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        const formData = new FormData(filterForm)
+        // displays if brand is checked
+        let nikeOn = formData.get('nike')
+        let adidasOn = formData.get('adidas')
+        let pumaOn = formData.get('puma')
+        let newBalanceOn = formData.get('new balance')
+        let balenciagaOn = formData.get('balenciaga')
+
+        let brandsChecked = {nike: nikeOn, adidas: adidasOn, puma: pumaOn, newBalance: newBalanceOn, balenciaga: balenciagaOn}
+
+        let nike = document.getElementById('nike').name
+        let adidas = document.getElementById('adidas').name
+        let puma = document.getElementById('puma').name
+        let newBalance = document.getElementById('new balance').name
+        let balenciaga = document.getElementById('balenciaga').name
+
+        let brands = [nike, adidas, puma, newBalance, balenciaga]
+
+        let airJordanOn = formData.get('air jordan')
+        let yeezyOn = formData.get('yeezy')
+        let airMaxOn = formData.get('air max')
+
+        popularChecked = [airJordanOn, yeezyOn, airMaxOn]
+
+        let airJordan = document.getElementById('air jordan').name
+        let yeezy = document.getElementById('yeezy').name
+        let airMax = document.getElementById('air max').name
+
+        popular = [airJordan, yeezy, airMax]
+
+        axios.get('/api/sneakers')
+            .then((response) => {
+                const sneakers = response.data
+                page = document.getElementById('content')
+                page.innerHTML = ''
+
+
+                for (index in sneakers) {
+                    let sneakersBrandLowerCase = sneakers[index].brand.toLowerCase()
+                    for (brand of brands) {
+                        
+                        if (sneakersBrandLowerCase.includes(brand) && brandsChecked[brand] == 'on') {
+                            const sneakerItem = document.createElement('div')
+                            sneakerItem.innerHTML =
+                                `
+                        <div class="card" style="width: 25rem">
+                        <img class="card-img-top" src="${sneakers[index].image_path}">
+                        <div class="card-body">
+                        <h5 class="card-title">${sneakers[index].name}</h5>
+                        <p><strong>Description:</strong> ${sneakers[index].description}</p>
+                        <p><strong>Brand:</strong> ${sneakers[index].brand}</p>
+                        <p><strong>Purchase Place:</strong> ${sneakers[index].purchase_place}</p>
+                        <p><strong>Size:</strong> ${sneakers[index].size}</p>
+                        <p><strong>Type:</strong> ${sneakers[index].type}</p>
+                        <p><strong>Condition:</strong> ${sneakers[index].condition}</p>
+                        </div>
+                        </div>
+                        `
+                            page.appendChild(sneakerItem)
+                        }
+
+
+                    }
+                }
+            })
+    })
     filterMenu.appendChild(searchForm)
     filterMenu.appendChild(filterForm)
 }
