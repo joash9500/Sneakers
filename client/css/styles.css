@@ -7,6 +7,11 @@
     display:inline-block;
   }
 
+
+  .form-switch {
+    padding-left: 2.5em;
+    text-align: left;
+}
   /* nav .navbar-nav li a{
     color: white !important;
     } */
