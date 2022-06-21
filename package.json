@@ -19,11 +19,11 @@
   "homepage": "https://github.com/joash9500/sneakers#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bootstrap": "^5.1.3",
     "connect-pg-simple": "^7.0.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "pg": "^8.7.3"
-
   }
 }

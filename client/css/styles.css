@@ -1,0 +1,12 @@
+  body{
+    background: hwb(0 100% 0%);
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .card {
+    display:inline-block;
+  }
+
+  /* nav .navbar-nav li a{
+    color: white !important;
+    } */

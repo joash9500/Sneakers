@@ -15,13 +15,17 @@ function renderMySneakers() {
                 const sneakerItem = document.createElement('div')
                 sneakerItem.innerHTML =
                         `
-                Name: ${shoe.name}
-                Description: ${shoe.description}
-                Brand: ${shoe.brand}
-                Purchase Place: ${shoe.purchase_place}
-                Size: ${shoe.size}
-                Type: ${shoe.type}
-                <img src="${shoe.image_path}">
+                <div class="card" style="width: 25rem">
+                        <img class="card-img-top" src="${shoe.image_path}">
+                    <div class="card-body">
+                    <h5 class="card-title">${shoe.name}</h5>
+                        <p><strong>Description:</strong> ${shoe.description}</p>
+                        <p><strong>Brand:</strong> ${shoe.brand}</p>
+                        <p><strong>Purchase Place:</strong> ${shoe.purchase_place}</p>
+                        <p><strong>Size:</strong> ${shoe.size}</p>
+                        <p><strong>Type:</strong> ${shoe.type}</p>
+                    </div>
+                </div>
                 `
                 page.appendChild(sneakerItem)
                 }
