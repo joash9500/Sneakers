@@ -6,6 +6,7 @@ function renderSignup() {
     const htmlContent = document.getElementById('content')
     const form = document.createElement('form')
     form.innerHTML = `
+        <h1>Sign Up</h1>
         <label for="email">Email: </label>
         <input type="email" name="email"><br>
         <label for="password">Password: </label>
@@ -53,9 +54,28 @@ function renderSignup() {
             insta: instagram
 
         }).then(() => {
+            const data = {
+                email: email,
+                password: password
+            }
+            axios.post('/api/session', data) //sign in the user after signing up
+            .then((response) => {
+                console.log(response)
+                window.location = '/'
+            })
             window.location ='/' //redirect
-        }).catch((err) => {
-            console.log(err.response.data.message)
+
+        }).catch((error) => {
+            console.log(error.response.data.message)
+            const msg = document.createElement('p')
+            const status = error.response.status
+            if (status == 400) {
+                msg.innerText = 'Please fill in all fields in the sign up form'
+                
+            } else if (status == 500) {
+                msg.innerText = 'There is an issue with our server. Please try again later'
+            }
+            htmlContent.appendChild(msg)
         })
 
     })
