@@ -51,6 +51,7 @@ function renderHeader() {
     let addItemButton = document.querySelector('#add-item')
     let mySneakersButton = document.querySelector('#my-sneakers')
     
+    
     axios.get('/api/session').then((res) => {
         if (res.data.name == undefined) {
             //do nothing. 'logged in as' stays hidden

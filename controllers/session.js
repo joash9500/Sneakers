@@ -46,7 +46,8 @@ router.post('/api/session', (req, res) => {
 router.get('/api/session', (req, res) => {
     let name = req.session.name
     let email = req.session.email
-    res.json({ name, email })
+    let id = req.session.user_id
+    res.json({ id, name, email })
 })
 
 //delete session for log out

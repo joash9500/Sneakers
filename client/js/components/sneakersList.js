@@ -39,7 +39,6 @@ function renderFilter() {
                         <p><strong>Type:</strong> ${sneakers[index].type}</p>
                         <p><strong>Condition:</strong> ${sneakers[index].condition}</p>
                         </div>
-                        </div>
                         `
                         page.appendChild(sneakerItem)
                     }
@@ -233,7 +232,6 @@ function renderSneakers() {
 function renderAddSneakerForm() {
     const page = document.getElementById('content')
     const form = document.createElement('form')
-    // page.innerHTML = ''
     form.innerHTML = `
     <label for="name">Name: </label><br>
     <input type="text" name="name"> <br>
@@ -245,8 +243,10 @@ function renderAddSneakerForm() {
     <input type="text" name="purchase_place"> <br>
     <label for="size">Size: </label><br>
     <input type="text" name="size"> <br>
+
     <label for="sneakerType">Type: </label><br>
     <input type="text" name="sneakerType"> <br>
+    
     <label for="image_path">Image URL: </label><br>
     <input type="text" name="image_path"> <br>
     <label for="condition">Condition: </label><br>
@@ -265,40 +265,50 @@ function renderAddSneakerForm() {
         event.preventDefault()
         const formData = new FormData(form)
 
-        const sneakerData = {
-            name: formData.get("name"),
-            description: formData.get("description"),
-            brand: formData.get("brand"),
-            purchase_place: formData.get("purchase_place"),
-            size: formData.get("size"),
-            sneakerType: formData.get("sneakerType"),
-            image_path: formData.get("image_path"),
-            condition: formData.get("condition"),
-        }
-        const listingData = {
-            listing_date: formData.get("listing_date"),
-            location: formData.get("location"),
-            selling_price: formData.get("selling_price")
-        }
-        if (sneakerData.sneakerType == 'for sale') {
-            axios.post('/api/listings', listingData)
+        axios.get('/api/session').then((resp) => {
+            const user_id = resp.data.id
+            const sneakerData = {
+                name: formData.get("name"),
+                description: formData.get("description"),
+                brand: formData.get("brand"),
+                purchase_place: formData.get("purchase_place"),
+                size: formData.get("size"),
+                type: formData.get("sneakerType"),
+                image_path: formData.get("image_path"),
+                condition: formData.get("condition"),
+                user_id: user_id
+            }
+            const listingData = {
+                listing_date: formData.get("listing_date"),
+                location: formData.get("location"),
+                selling_price: formData.get("selling_price")
+                // user_id: user_id,
+                // sneaker_id: sneakerID
+            }
+
+            if (sneakerData.type == 'for sale') {
+                
+                axios.post('/api/listings', listingData)
+                    .then(response => {
+                    // renderListings()
+                    })
+            } else if (sneakerData.type == 'display') {
+                axios.post('/api/sneakers', sneakerData)
                 .then(response => {
+                    renderSneakers()
                 })
-        }
-        axios.post('/api/sneakers', sneakerData)
-            .then(response => {
-                renderSneakers()
-            })
-            .catch((err) => {
-                if (err.response.status === 400) {
-                    const reason = err.response.data.message
-                    alert(reason)
-                } else {
-                    alert('Unknown error occurred!!')
-                }
-
-
-            })
+                .catch((err) => {
+                    if (err.response.status === 400) {
+                        const reason = err.response.data.message
+                        alert(reason)
+                    } else {
+                        alert('Unknown error occurred!!')
+                    }
+                })
+            } else {
+                alert('something wrong with type selected')
+            }
+        })
     })
 }
 
