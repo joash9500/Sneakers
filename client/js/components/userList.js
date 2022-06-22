@@ -9,31 +9,43 @@ function renderUsers() {
 
         userData = resp.data
         userData.forEach(elm => {
-            const userName = document.createElement('h3')
-            userName.innerText = elm.name
-            const userLocation = document.createElement('p')
-            userLocation.innerText = 'Location: ' + elm.location
-            const userSize = document.createElement('p')
-            userSize.innerText = 'Ideal shoe size: ' + elm.ideal_size
-            const userPhoto = document.createElement('img')
-            userPhoto.src = elm.photo_path
+            //master user_div
+            const user_div = document.createElement('div')
+            user_div.classList.add('card')
+            user_div.style.width = '25rem'
+            //2nd master div
+            const user_div_body = document.createElement('div')
+            user_div_body.classList.add('card-body')
+            //children of 2nd master div
+                const userName = document.createElement('h3')
+                userName.innerText = elm.name
+                const userLocation = document.createElement('p')
+                userLocation.innerText = 'Location: ' + elm.location
+                const userSize = document.createElement('p')
+                userSize.innerText = 'Ideal shoe size: ' + elm.ideal_size
+                const userPhoto = document.createElement('img')
+                userPhoto.src = elm.photo_path
+                userPhoto.classList.add('img-fluid')
 
-            //admin functionality - delete and edit users
-            //delete user button
-            const deleteUserButton = document.createElement('button')
-            deleteUserButton.innerText = 'Delete User'
-            deleteUserButton.addEventListener('click', () => {
-                deleteUsers(elm.id)
-            })
+                //admin functionality - delete and edit users
+                //delete user button
+                const deleteUserButton = document.createElement('button')
+                deleteUserButton.innerText = 'Delete User'
+                deleteUserButton.addEventListener('click', () => {
+                    deleteUsers(elm.id)
+                })
 
-            //edit user button (renders an edit user form)
-            const editUserButton = document.createElement('button')
-            editUserButton.innerText = 'Edit'
-            editUserButton.addEventListener('click', () => {
-                editUsers(elm.id)
-            })
-
-            htmlContent.append(userName, userPhoto, userLocation, userSize, deleteUserButton, editUserButton)
+                //edit user button (renders an edit user form)
+                const editUserButton = document.createElement('button')
+                editUserButton.innerText = 'Edit'
+                editUserButton.addEventListener('click', () => {
+                    editUsers(elm.id)
+                })
+                //append children to 2nd master div
+                user_div_body.append(userName, userLocation, userSize, userPhoto, deleteUserButton, editUserButton)
+                
+                user_div.appendChild(user_div_body)
+                htmlContent.appendChild(user_div)
         })
 
     })

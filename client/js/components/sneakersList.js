@@ -171,7 +171,7 @@ function renderSneakers() {
             <div class="card" style="width: 25rem">
                     <img class="card-img-top" src="${sneakers[index].image_path}">
                 <div class="card-body">
-                <h5 class="card-title">${sneakers[index].name}</h5>
+                    <h5 class="card-title">${sneakers[index].name}</h5>
                     <p><strong>Description:</strong> ${sneakers[index].description}</p>
                     <p><strong>Brand:</strong> ${sneakers[index].brand}</p>
                     <p><strong>Purchase Place:</strong> ${sneakers[index].purchase_place}</p>
@@ -189,7 +189,6 @@ function renderSneakers() {
 }
 
 // adds sneakers 
-
 function renderAddSneakerForm() {
     const page = document.getElementById('content')
     const form = document.createElement('form')
@@ -203,27 +202,49 @@ function renderAddSneakerForm() {
     <label for="purchase_place">Purchase location: </label><br>
     <input type="text" name="purchase_place"> <br>
     <label for="size">Size: </label><br>
-    <input type="text" name="size"> <br>
+    <input type="number" name="size"> <br>
 
-    <label for="sneakerType">Type: </label><br>
-    <input type="text" name="sneakerType"> <br>
+    <label>Type: </label><br>
+    <label for="display">Display </label>
+    <input type="radio" name="type" value="display">
+    <label for="listing">For Sale </label>
+    <input type="radio" name="type" value="for sale"><br>
     
     <label for="image_path">Image URL: </label><br>
     <input type="text" name="image_path"> <br>
-    <label for="condition">Condition: </label><br>
-    <input type="text" name="condition"> <br>
-    <label for="listing_date">Listing Date: (YYYY-MM-DD)</label><br>
-    <input type="text" name="listing_date"> <br>
-    <label for="location">Location: </label><br>
-    <input type="text" name="location"> <br>
-    <label for="selling_price">Price: </label><br>
-    <input type="text" name="selling_price"> <br>
+
+    <label>Condition: </label><br>
+    <label for="As New">As New</label>
+    <input type="radio" name="condition" value="As New"><br>
+    <label for="Excellent">Excellent</label>
+    <input type="radio" name="condition" value="Excellent"><br>
+    <label for="Good">Good</label>
+    <input type="radio" name="condition" value="Good"><br>
+    <label for="Fair">Fair</label>
+    <input type="radio" name="condition" value="Fair"><br>
 
     <button>Add your item</button> 
     `
     page.replaceChildren(form)
     form.addEventListener('submit', event => {
         event.preventDefault()
+
+        let selectedType = ''
+        let radio_type = document.getElementsByName('type')
+        for (type_option of radio_type) {
+            if (type_option.checked) {
+                selectedType = type_option.value
+            }
+        }
+
+        let selectedCondition = ''
+        let radio_conditions = document.getElementsByName('condition')
+        for (condition of radio_conditions) {
+            if (condition.checked) {
+                selectedCondition = type_option.value
+            }
+        }
+
         const formData = new FormData(form)
 
         axios.get('/api/session').then((resp) => {
@@ -234,26 +255,12 @@ function renderAddSneakerForm() {
                 brand: formData.get("brand"),
                 purchase_place: formData.get("purchase_place"),
                 size: formData.get("size"),
-                type: formData.get("sneakerType"),
+                type: selectedType,
                 image_path: formData.get("image_path"),
-                condition: formData.get("condition"),
+                condition: selectedCondition,
                 user_id: user_id
             }
-            const listingData = {
-                listing_date: formData.get("listing_date"),
-                location: formData.get("location"),
-                selling_price: formData.get("selling_price")
-                // user_id: user_id,
-                // sneaker_id: sneakerID
-            }
 
-            if (sneakerData.type == 'for sale') {
-                
-                axios.post('/api/listings', listingData)
-                    .then(response => {
-                    // renderListings()
-                    })
-            } else if (sneakerData.type == 'display') {
                 axios.post('/api/sneakers', sneakerData)
                 .then(response => {
                     renderSneakers()
@@ -266,9 +273,7 @@ function renderAddSneakerForm() {
                         alert('Unknown error occurred!!')
                     }
                 })
-            } else {
-                alert('something wrong with type selected')
-            }
+        
         })
     })
 }

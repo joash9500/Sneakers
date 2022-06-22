@@ -1,37 +1,116 @@
 function renderMySneakers() {
     console.log('mySneakers page is rendering')
-    page = document.getElementById('content')
+    let page = document.getElementById('content')
     axios.get('/api/session')
     .then((response) => {
         page.innerHTML = ''
         const userData = response.data; //get session data 
-        // console.log(userData.email, userData.id, userData.name)
+        // console.log(userData.email, userData.id, userData.name, userData.location)
         const user_id = userData.id
         axios.get(`/api/sneakers/${user_id}`)
         .then((response) => {
-            // console.log(response.data)
+
             const userSneakerData = response.data //returns an array of sneaker objects
             for (const sneaker of userSneakerData) {
+                //master div
                 const sneakerItem = document.createElement('div')
-                sneakerItem.innerHTML =
-                    `
-                    <div class="card" style="width: 25rem">
-                    <img class="card-img-top" src="${sneaker.image_path}">
-                    <div class="card-body">
-                    <h5 class="card-title">${sneaker.name}</h5>
-                    <p><strong>Description:</strong> ${sneaker.description}</p>
-                    <p><strong>Brand:</strong> ${sneaker.brand}</p>
-                    <p><strong>Purchase Place:</strong> ${sneaker.purchase_place}</p>
-                    <p><strong>Size:</strong> ${sneaker.size}</p>
-                    <p><strong>Type:</strong> ${sneaker.type}</p>
-                    <p><strong>Condition:</strong> ${sneaker.condition}</p>
-                    </div>
-                    `
-                    page.appendChild(sneakerItem)
+                sneakerItem.classList.add('card')
+                sneakerItem.style.width = '25rem'
+                //2nd master div
+                const sneakerItem_body = document.createElement('div')
+                sneakerItem_body.classList.add('card-body')
+                //children of 2nd master div
+                const sneakerImg = document.createElement('img')
+                sneakerImg.src = sneaker.image_path
+                sneakerImg.classList.add('img-fluid')
+
+                const sneakerTitle = document.createElement('h5')
+                sneakerTitle.classList.add('card-title')
+                sneakerTitle.innerText = sneaker.name
+
+                const brand = document.createElement('p')
+                brand.innerText = sneaker.brand
+
+                const purchasePlace = document.createElement('p')
+                purchasePlace.innerText = sneaker.purchase_place
+
+                const sneakerSize = document.createElement('p')
+                sneakerSize.innerText = sneaker.size
+
+                const sneakerType = document.createElement('p')
+                sneakerType.innerText = sneaker.type
+
+                const sneakerCondition = document.createElement('p')
+                sneakerCondition.innerText = sneaker.sneakerCondition
+
+                const addListingButton = document.createElement('button')
+                addListingButton.innerText = 'Add to Listing'
+                addListingButton.addEventListener('click', () => {
+                    console.log('running addlisting button event listener')
+                    addListing(sneaker.id)
+                })
+                
+                sneakerItem_body.append(sneakerImg, sneakerTitle, brand, purchasePlace, sneakerSize, sneakerType, sneakerCondition, addListingButton)
+                sneakerItem.appendChild(sneakerItem_body)
+                page.appendChild(sneakerItem)
+
+                // sneakerItem.innerHTML =
+                //     `
+                //     <div class="card" style="width: 25rem">
+                //     <img class="card-img-top" src="${sneaker.image_path}">
+                //     <div class="card-body">
+                //     <h5 class="card-title">${sneaker.name}</h5>
+                //     <p><strong>Description:</strong> ${sneaker.description}</p>
+                //     <p><strong>Brand:</strong> ${sneaker.brand}</p>
+                //     <p><strong>Purchase Place:</strong> ${sneaker.purchase_place}</p>
+                //     <p><strong>Size:</strong> ${sneaker.size}</p>
+                //     <p><strong>Type:</strong> ${sneaker.type}</p>
+                //     <p><strong>Condition:</strong> ${sneaker.condition}</p>
+
+                //     </div>
+                //     `
+
+
             }
         })
         
     })
 }
 
-    
+function addListing(sneaker_id) {
+    console.log('add listings page is running')
+    let page = document.getElementById('content')
+    const form = document.createElement('form')
+    form.innerHTML = `
+    <label for="listing_date">Listing Date: (YYYY-MM-DD)</label><br>
+    <input type="text" name="listing_date"><br>
+    <label for="selling_price">Price: </label><br>
+    <input type="number" name="selling_price"> <br>
+
+    <button type="submit">Add your item</button> 
+    `
+    page.replaceChildren(form)
+
+    form.addEventListener('submit', () => {
+
+        const formData = new FormData(form)
+
+        axios.get('/api/session').then((response) => { //get id and location from session
+
+            let reqData = {
+                    user_id: response.data.id,
+                    user_location: response.data.location,
+                    sneaker_id: sneaker_id,
+                    listing_date: formData.get("listing_date"),
+                    selling_price: formData.get("selling_price")
+                }
+
+            axios.post('/api/listings/', reqData).then((response) => {
+                renderListings()
+            })
+        })
+    })
+
+
+}
+
