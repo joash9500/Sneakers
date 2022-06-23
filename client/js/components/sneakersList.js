@@ -169,8 +169,10 @@ function renderFilter() {
                 }
             })
     })
-    
-    filterMenu.replaceChildren(searchForm, filterForm)
+
+    filterMenu.replaceChildren(searchForm)
+    filterMenu.replaceChildren(filterForm)
+
 }
 
 function renderSneakers() {

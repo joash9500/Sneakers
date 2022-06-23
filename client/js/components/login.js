@@ -3,6 +3,7 @@ console.log('login page is rendering')
 function renderLogin() {
 
     const htmlContent = document.getElementById('content')
+    const htmlContent2 = document.getElementById('side-bar')
     const form = document.createElement('form')
     form.innerHTML = `
         <form>
@@ -21,6 +22,7 @@ function renderLogin() {
     `
 
     htmlContent.replaceChildren(form)
+    htmlContent2.replaceChildren()
 
     form.addEventListener('submit', (event) => {
         event.preventDefault() //prevents default pasting into URL when form is submitted

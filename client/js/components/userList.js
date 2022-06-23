@@ -1,5 +1,6 @@
 function renderUsers() {
     const htmlContent = document.getElementById('content')
+    const htmlContent2 = document.getElementById('side-bar')
 
     axios.get('/api/users').then((resp) => {
         htmlContent.innerHTML = ''
@@ -9,6 +10,34 @@ function renderUsers() {
 
         userData = resp.data
         userData.forEach(elm => {
+<<<<<<< HEAD
+            const userName = document.createElement('h3')
+            userName.innerText = elm.name
+            const userLocation = document.createElement('p')
+            userLocation.innerText = 'Location: ' + elm.location
+            const userSize = document.createElement('p')
+            userSize.innerText = 'Ideal shoe size: ' + elm.ideal_size
+            const userPhoto = document.createElement('img')
+            userPhoto.src = elm.photo_path
+
+            //admin functionality - delete and edit users
+            //delete user button
+            const deleteUserButton = document.createElement('button')
+            deleteUserButton.innerText = 'Delete User'
+            deleteUserButton.addEventListener('click', () => {
+                deleteUsers(elm.id)
+            })
+
+            //edit user button (renders an edit user form)
+            const editUserButton = document.createElement('button')
+            editUserButton.innerText = 'Edit'
+            editUserButton.addEventListener('click', () => {
+                editUsers(elm.id)
+            })
+
+            htmlContent.append(userName, userPhoto, userLocation, userSize, deleteUserButton, editUserButton)
+            htmlContent2.replaceChildren()
+=======
             //master user_div
             const user_div = document.createElement('div')
             user_div.classList.add('card')
@@ -46,6 +75,7 @@ function renderUsers() {
                 
                 user_div.appendChild(user_div_body)
                 htmlContent.appendChild(user_div)
+>>>>>>> 3b52fb2dbdd44a7ee9caffd539fbe10032002e05
         })
 
     })

@@ -4,6 +4,7 @@ function renderSignup() {
     console.log('signup page is rendering')
 
     const htmlContent = document.getElementById('content')
+    const htmlContent2 = document.getElementById('side-bar')
     const form = document.createElement('form')
     form.innerHTML = `
         <form>
@@ -59,6 +60,7 @@ function renderSignup() {
     `
 
     htmlContent.replaceChildren(form)
+    htmlContent2.replaceChildren()
 
 
     form.addEventListener('submit', (event) => {
