@@ -61,7 +61,7 @@ VALUES (
     'https://www.adidas.com.au/',
     10,
     'for sale',
-    'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1631629853-screenshot-2021-09-14-at-15-29-15-1631629801.png?crop=0.684xw:0.842xh;0.131xw,0.0651xh&resize=768:*',
+    'https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2022%2F03%2Fadidas-yeezy-boost-350-turtle-dove-2022-re-release-info-aq4832-001.jpg?q=90&w=1400&cbr=1&fit=max',
     'Great',
     1
 );
@@ -199,6 +199,19 @@ VALUES (
     'https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/055/890/481/original/742912_01.jpg.jpeg?action=crop&width=950',
     'Like New',
     1
+);
+
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'Balenciaga Logo Printed Speed Sneakers',
+    'State of the art design ',
+    'Balenciaga',
+    'JD sports',
+    8.5,
+    'display',
+    'https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/055/890/481/original/742912_01.jpg.jpeg?action=crop&width=950',
+    'Fair',
+    3
 );
 
 INSERT INTO listings (sneaker_id, users_id, listing_date, location, selling_price) 

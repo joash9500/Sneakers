@@ -41,7 +41,7 @@ function renderMySneakers() {
                 sneakerType.innerText = sneaker.type
 
                 const sneakerCondition = document.createElement('p')
-                sneakerCondition.innerText = sneaker.sneakerCondition
+                sneakerCondition.innerText = sneaker.condition
 
                 const addListingButton = document.createElement('button')
                 addListingButton.innerText = 'Add to Listing'

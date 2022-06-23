@@ -1,12 +1,12 @@
 function renderHeader() {
     const headerNode = document.getElementById('headerbar') //get html element for the header bar
     headerNode.innerHTML = `
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav id='navigationBar' class=" navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#" onClick = "renderSneakers()">SoleMates</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="d-flex justify-content-between collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" onClick = "renderSneakers()">
                 <a class="nav-link" href="#">All Sneakers</a>

@@ -15,10 +15,43 @@
 
 .content {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .content > div > div.card {
   margin-right: 75px;
+}
+
+a::before {  
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+a:hover::before {
+  transform: scaleX(1);
+  
+  transform-origin: bottom left;
+}
+
+a::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  inset: 0 0 0 0;
+  background: rgba(30, 152, 245, 0.514);
+  
+  z-index: -1;
+  transition: transform .3s ease;
+}
+a {
+  text-decoration: none;
+  position: relative;
+  color: rgb(23, 29, 32);
+  font-size: 15px;
+}
+input:focus {
+  outline: none;
 }
 
 /* .side-bar > form > div.card {
