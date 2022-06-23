@@ -16,9 +16,7 @@ const usersRouter = require('./controllers/users')
 const sessionRouter = require('./controllers/session')
 const listingsRouter =  require('./controllers/listings')
 
-app.get('/', (req, res) => {
-  res.send('hello')
-});
+
 
 app.use(expressSession({
   store: new pgSession({
