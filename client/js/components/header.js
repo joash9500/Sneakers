@@ -30,8 +30,8 @@ function renderHeader() {
                 <a class="nav-link" href="#" id="log-in">Login</a>
             </li>
         </ul>
-
     </div>
+
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">

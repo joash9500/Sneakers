@@ -79,6 +79,48 @@ VALUES (
     2
 );
 
+
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'New Balance 574',
+    'Sleak design with a plethora of vibrant colours',
+    'New Balance',
+    'Gumtree',
+    8,
+    'display',
+    'https://cdn.pixabay.com/photo/2016/11/18/22/29/footwear-1837170_960_720.jpg',
+    'excellent',
+    3
+);
+
+
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'Puma Classic (red)',
+    'Modern twist on an old classic',
+    'Puma',
+    'puma.com.au',
+    8.5,
+    'display',
+    'https://cdn.pixabay.com/photo/2016/11/19/11/24/puma-1838735_960_720.jpg',
+    'good',
+    1
+);
+
+
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'Nike SB 2016',
+    'Perfect mix of comfort and style',
+    'Nike',
+    'footlocker.com.au',
+    9.5,
+    'for sale',
+    'https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg',
+    'fair',
+    2
+);
+
 INSERT INTO listings (sneaker_id, users_id, listing_date, location, selling_price) 
 VALUES (
     1,
@@ -104,5 +146,34 @@ VALUES (
     '2022-06-14',
     'Sydney',
     1000
+);
+
+INSERT INTO listings (sneaker_id, users_id, listing_date, location, selling_price) 
+VALUES (
+    4,
+    3,
+    '2022-06-22',
+    'Sydney',
+    80
+);
+
+
+INSERT INTO listings (sneaker_id, users_id, listing_date, location, selling_price) 
+VALUES (
+    5,
+    1,
+    '2022-06-23',
+    'Melbourne',
+    130
+);
+
+
+INSERT INTO listings (sneaker_id, users_id, listing_date, location, selling_price) 
+VALUES (
+    6,
+    2,
+    '2022-06-24',
+    'Perth',
+    200
 );
 

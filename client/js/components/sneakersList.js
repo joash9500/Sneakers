@@ -7,9 +7,10 @@ function renderFilter() {
     const filterForm = document.createElement('form')
     filterMenu.style.display = 'inline-block'
     searchForm.innerHTML = `
-        <label for="search"></label><br>
-        <input type="text" name="search" placeholder="search"> 
-        <button>Search</button> 
+        <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>   
     `
     // makes request to filter options on click 
     searchForm.addEventListener('submit', (event) => {
