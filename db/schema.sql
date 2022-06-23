@@ -20,7 +20,7 @@ CREATE TABLE sneakers (
     description VARCHAR(255),
     brand VARCHAR(255),
     purchase_place VARCHAR(255),
-    size INT,
+    size VARCHAR(5),
     type VARCHAR(50),
     image_path VARCHAR(255),
     condition VARCHAR(50),

@@ -138,10 +138,10 @@ function renderFilter() {
                     let results = []
                     for (filter in filters) {
                         let values = filters[filter]
-
                         let result = values.includes(sneakers[index][filter])
                         results.push(result)
                         console.log(result)
+                        console.log(sneakers[index][filter])
                     }
                     // check if all filters can produce an item
                     let allFiltersMatch = results.every(filterMatches => filterMatches == true)
