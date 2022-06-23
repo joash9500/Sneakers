@@ -9,7 +9,6 @@ function renderLogin() {
         <input type="email" name="email"><br>
         <label for="password">Password: </label>
         <input type="password" name="password"><br>
-
         <button type="submit">Log In</button>
     `
 
