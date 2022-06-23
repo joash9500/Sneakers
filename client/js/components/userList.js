@@ -66,6 +66,59 @@ function editUsers(id) {
     const updateForm = document.createElement('form')
     updateForm.innerHTML = `
 
+            <h1>Update User</h1>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email">
+                </div>
+                <div class="form-group col-md-12">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="name" name="name" class="form-control" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="username" name="username" class="form-control" placeholder="Username">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                <label for="location">Location (City)</label>
+                <input type="location" name="location" class="form-control" placeholder="Location (City)">
+                </div>
+                <div class="form-group col-md-12">
+                <label for="shoe_size">Shoe Size</label>
+                <select type="shoe_size" name="shoe_size" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                </select>
+                </div>
+                <div class="form-group col-md-12">
+                <label for="photo_URL">Photo (url)</label>
+                <input type="photo_URL" name="photo_URL" class="form-control">
+                </div>
+                <div class="form-group col-md-12">
+                <label for="instagram_URL">Instagram (url)</label>
+                <input type="instagram_URL" name="instagram_URL" class="form-control">
+                </div>    
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+    </form> 
+
+
         <h1>Update User</h1>
         <label for="email">Email: </label>
         <input type="email" name="email"><br>
@@ -82,6 +135,7 @@ function editUsers(id) {
         <label for="instagram_URL">Instagram URL: </label>
         <input type="url" name="instagram_URL"><br>
         <button type="submit">Save</button>
+
 
     `
     htmlContent.replaceChildren(updateForm)
