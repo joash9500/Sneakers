@@ -15,28 +15,13 @@ const usersRouter = require('./controllers/users')
 const sessionRouter = require('./controllers/session')
 const listingsRouter =  require('./controllers/listings')
 
-// app.use(expressSession({
-//   store: new pgSession({
-//       pool: db,
-//       createTableIfMissing: true,
-//   }),
-//   secret: process.env.EXPRESS_SESSION_SECRET_KEY,    
-// }))
-
-let db;
-if (process.env.NODE_ENV === 'production') {
-  db = new pg.Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
-  })
-} else {
-  db = new pg.Pool({
-    database: 'sneakers',
-    // password: 'optional_password' // If you have a password on your local db
-  })
-}
+app.use(expressSession({
+  store: new pgSession({
+      pool: db,
+      createTableIfMissing: true,
+  }),
+  secret: process.env.EXPRESS_SESSION_SECRET_KEY,    
+}))
 
 app.use(express.static('client'))
 app.use(express.json())
