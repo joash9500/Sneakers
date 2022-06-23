@@ -1,4 +1,5 @@
 const express = require("express");
+const pg = require('pg')
 require('dotenv').config()
 
 const expressSession = require('express-session')
@@ -14,6 +15,10 @@ const sneakersRouter = require('./controllers/sneakers')
 const usersRouter = require('./controllers/users')
 const sessionRouter = require('./controllers/session')
 const listingsRouter =  require('./controllers/listings')
+
+app.get('/', (req, res) => {
+  res.send('hello')
+});
 
 app.use(expressSession({
   store: new pgSession({
