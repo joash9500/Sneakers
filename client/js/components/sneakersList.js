@@ -22,8 +22,10 @@ function renderFilter() {
                 page = document.getElementById('content')
                 page.innerHTML = ''
                 for (index in sneakers) {
+                    // searches for both the name and brand of sneakers in the DB
+                    let sneakersBrandLowerCase = sneakers[index].brand.toLowerCase()
                     let sneakersLowerCase = sneakers[index].name.toLowerCase()
-                    if (sneakersLowerCase.includes(searchLowerCase)) {
+                    if (sneakersLowerCase.includes(searchLowerCase)  || sneakersBrandLowerCase.includes(searchLowerCase)) {
                         const sneakerItem = document.createElement('div')
                         sneakerItem.innerHTML =
                             `
@@ -114,7 +116,7 @@ function renderFilter() {
         let filters = {}
 
         formData.forEach((value, key) => {
-
+            // pushes in an array and/or adds a value to the array
             if (filters[key]) {
                 filters[key].push(value)
               } else {
