@@ -12,7 +12,9 @@
     padding-left: 2.5em;
     text-align: left;
 }
-
+#user {
+  color: white;
+}
 .content {
   display: flex;
   flex-wrap: wrap;
@@ -21,7 +23,10 @@
 .content > div > div.card {
   margin-right: 75px;
 }
-
+#navbarNav {
+  display: flex;
+  justify-content: space-around
+}
 a::before {  
   transform: scaleX(0);
   transform-origin: bottom right;
