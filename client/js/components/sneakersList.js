@@ -192,8 +192,8 @@ function renderFilter() {
                 }
             })
     })
-    filterMenu.appendChild(searchForm)
-    filterMenu.appendChild(filterForm)
+    filterMenu.replaceChildren(searchForm)
+    filterMenu.replaceChildren(filterForm)
 }
 
 function renderSneakers() {

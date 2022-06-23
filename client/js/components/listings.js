@@ -31,5 +31,6 @@ function renderListings() {
             page.appendChild(sneakerItem)
             }
         });
+    renderFilter()
 
 }

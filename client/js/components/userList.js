@@ -1,5 +1,6 @@
 function renderUsers() {
     const htmlContent = document.getElementById('content')
+    const htmlContent2 = document.getElementById('side-bar')
 
     axios.get('/api/users').then((resp) => {
         htmlContent.innerHTML = ''
@@ -34,6 +35,7 @@ function renderUsers() {
             })
 
             htmlContent.append(userName, userPhoto, userLocation, userSize, deleteUserButton, editUserButton)
+            htmlContent2.replaceChildren()
         })
 
     })
