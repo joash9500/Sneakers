@@ -5,10 +5,12 @@ function renderFilter() {
     const searchForm = document.createElement('form')
     const filterForm = document.createElement('form')
     searchForm.innerHTML = `
-        <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <div class="w-100">
+        <form class="form-inline d-flex flex-row">
+        <input class="shadow-none rounded border-0 w-auto p-1" type="search" placeholder="Search" label="Search" name="search">
+        <button class="btn btn-outline-success " type="submit">Search</button>
         </form>   
+    </div>
     `
     // makes request to filter options on click 
     searchForm.addEventListener('submit', (event) => {
@@ -25,7 +27,7 @@ function renderFilter() {
                     // searches for both the name and brand of sneakers in the DB
                     let sneakersBrandLowerCase = sneakers[index].brand.toLowerCase()
                     let sneakersLowerCase = sneakers[index].name.toLowerCase()
-                    if (sneakersLowerCase.includes(searchLowerCase)  || sneakersBrandLowerCase.includes(searchLowerCase)) {
+                    if (sneakersLowerCase.includes(searchLowerCase) || sneakersBrandLowerCase.includes(searchLowerCase)) {
                         const sneakerItem = document.createElement('div')
                         sneakerItem.innerHTML =
                             `
@@ -119,15 +121,15 @@ function renderFilter() {
             // pushes in an array and/or adds a value to the array
             if (filters[key]) {
                 filters[key].push(value)
-              } else {
+            } else {
                 filters[key] = [value] // New array with value in it
-              }
-            if (filters[key] == "0" ) {
+            }
+            if (filters[key] == "0") {
                 delete filters[key]
-                    }
+            }
             console.log(value, key)
         });
-        
+
         console.log(filters)
         axios.get('/api/sneakers')
             .then((response) => {
@@ -169,12 +171,12 @@ function renderFilter() {
                 }
             })
     })
+   
+    const navbar = document.getElementById('navbarNav')
+        navbar.append(searchForm);
 
-    filterMenu.replaceChildren(searchForm)
     filterMenu.replaceChildren(filterForm)
-
 }
-
 function renderSneakers() {
     renderFilter()
     const filterMenu = document.querySelector('#side-bar')
@@ -204,11 +206,8 @@ function renderSneakers() {
             `
                 page.appendChild(sneakerItem)
             }
-
         });
-
 }
-
 // adds sneakers 
 function renderAddSneakerForm() {
     const filterMenu = document.querySelector('#side-bar')
@@ -232,7 +231,7 @@ function renderAddSneakerForm() {
     <input type="radio" name="type" value="display">
     <label for="listing">For Sale </label>
     <input type="radio" name="type" value="for sale"><br>
-    
+
     <label for="image_path">Image URL: </label><br>
     <input type="text" name="image_path"> <br>
 
@@ -259,7 +258,6 @@ function renderAddSneakerForm() {
                 selectedType = type_option.value
             }
         }
-
         let selectedCondition = ''
         let radio_conditions = document.getElementsByName('condition')
         for (condition of radio_conditions) {
@@ -267,9 +265,7 @@ function renderAddSneakerForm() {
                 selectedCondition = type_option.value
             }
         }
-
         const formData = new FormData(form)
-
         axios.get('/api/session').then((resp) => {
             const user_id = resp.data.id
             const sneakerData = {
@@ -283,8 +279,7 @@ function renderAddSneakerForm() {
                 condition: selectedCondition,
                 user_id: user_id
             }
-
-                axios.post('/api/sneakers', sneakerData)
+            axios.post('/api/sneakers', sneakerData)
                 .then(response => {
                     renderSneakers()
                 })
@@ -296,7 +291,7 @@ function renderAddSneakerForm() {
                         alert('Unknown error occurred!!')
                     }
                 })
-        
+
         })
     })
 }
