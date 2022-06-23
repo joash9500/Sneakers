@@ -6,29 +6,60 @@ function renderSignup() {
     const htmlContent = document.getElementById('content')
     const form = document.createElement('form')
     form.innerHTML = `
-        <h1>Sign Up</h1>
-        <label for="email">Email: </label>
-        <input type="email" name="email"><br>
-        <label for="password">Password: </label>
-        <input type="password" name="password"><br>    
-        <label for="name">Name: </label>
-        <input type="text" name="name"><br>
-        <label for="username">Username: </label>
-        <input type="text" name="username"><br>
-
-        <label for="location">Location: </label>
-        <input type="text" name="location"><br>
-        <label for="shoe_size">Shoe size: </label>
-        <input type="number" name="shoe_size"><br>
-        <label for="photo_URL">Photo URL: </label>
-        <input type="url" name="photo_URL"><br>
-        <label for="instagram_URL">Instagram URL: </label>
-        <input type="url" name="instagram_URL"><br>
-
-        <button type="submit">Save</button>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email">
+                </div>
+                <div class="form-group col-md-12">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="name" name="name" class="form-control" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="username" name="username" class="form-control" placeholder="Username">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                <label for="location">Location (City)</label>
+                <input type="location" name="location" class="form-control" placeholder="Location (City)">
+                </div>
+                <div class="form-group col-md-12">
+                <label for="shoe_size">Shoe Size</label>
+                <select type="shoe_size" name="shoe_size" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                </select>
+                </div>
+                <div class="form-group col-md-12">
+                <label for="photo_URL">Photo (url)</label>
+                <input type="photo_URL" name="photo_URL" class="form-control">
+                </div>
+                <div class="form-group col-md-12">
+                <label for="instagram_URL">Instagram (url)</label>
+                <input type="instagram_URL" name="instagram_URL" class="form-control">
+                </div>    
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
     `
 
     htmlContent.replaceChildren(form)
+
 
     form.addEventListener('submit', (event) => {
         event.preventDefault() //prevents default pasting into URL when form is submitted

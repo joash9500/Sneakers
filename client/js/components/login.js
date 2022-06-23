@@ -5,11 +5,19 @@ function renderLogin() {
     const htmlContent = document.getElementById('content')
     const form = document.createElement('form')
     form.innerHTML = `
-        <label for="email">Email: </label>
-        <input type="email" name="email"><br>
-        <label for="password">Password: </label>
-        <input type="password" name="password"><br>
-        <button type="submit">Log In</button>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email">
+                </div>
+                <div class="form-group col-md-12">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
     `
 
     htmlContent.replaceChildren(form)
@@ -25,8 +33,8 @@ function renderLogin() {
 
         axios.post('/api/session', data)
         .then((response) => {
-            console.log(response)
-            window.location = '/'
+            console.log(response.data.session)
+            window.location = '/' //console log above won't work if window.location is active. commentn this line out if you wnat to see what the response is
         })
 
     })

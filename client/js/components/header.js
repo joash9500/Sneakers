@@ -14,14 +14,14 @@ function renderHeader() {
             <li class="nav-item" onClick = "renderListings()">
                 <a class="nav-link" href="#">All Listings</a>
             </li>
-            <li class="nav-item" onClick = "renderMySneakers()">
-                <a class="nav-link" href="#" id="my-sneakers" style="display: none">My Sneakers</a>
-            </li>
             <li class="nav-item" onClick = "renderUsers()">
                 <a class="nav-link" href="#">Users</a>
             </li>
+            <li class="nav-item" onClick = "renderMySneakers()">
+                <a class="nav-link" href="#" id="my-sneakers" style="display: none">My Sneakers</a>
+            </li>
             <li class="nav-item" onClick = "renderAddSneakerForm()">
-                <a class="nav-link" href="#" id="add-item" style="display: none">Add an Item</a>
+                <a class="nav-link" href="#" id="add-sneaker" style="display: none">Add Sneaker</a>
             </li>
             <li class="nav-item" onClick = "renderSignup()">
                 <a class="nav-link" href="#" id ="signup">Signup</a>
@@ -30,8 +30,8 @@ function renderHeader() {
                 <a class="nav-link" href="#" id="log-in">Login</a>
             </li>
         </ul>
-
     </div>
+
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -48,8 +48,9 @@ function renderHeader() {
     let username = document.querySelector('#user > span')
     let userStatus = document.querySelector('#user')
     let signupButton = document.querySelector('#signup')
-    let addItemButton = document.querySelector('#add-item')
+    let addSneakerButton = document.querySelector('#add-sneaker')
     let mySneakersButton = document.querySelector('#my-sneakers')
+    
     
     axios.get('/api/session').then((res) => {
         if (res.data.name == undefined) {
@@ -60,7 +61,7 @@ function renderHeader() {
             logoutButton.style.display = 'inline-block' //show logout button
             loginButton.style.display = 'none' //hide login button
             signupButton.style.display = 'none' //hide signup button
-            addItemButton.style.display = 'inline-block' //show add item button
+            addSneakerButton.style.display = 'inline-block' //show add sneaker button
             mySneakersButton.style.display = 'inline-block' //show my sneakers button
         } else {
             console.log('something weird happened with api session')
@@ -71,6 +72,7 @@ function renderHeader() {
         axios.delete('/api/session').then(() => {
             console.log('logged out')
             renderHeader()
+            renderSneakers()
         })
     })
 }

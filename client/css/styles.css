@@ -12,6 +12,26 @@
     padding-left: 2.5em;
     text-align: left;
 }
+
+.content {
+  display: flex;
+}
+
+.content > div > div.card {
+  margin-right: 75px;
+}
+
+/* .side-bar > form > div.card {
+  margin: 5px;
+}
+
+.side-bar > form > form > div {
+  margin: 5px;
+} */
+
+/* .content > div {
+  flex: 1fr;
+} */
   /* nav .navbar-nav li a{
     color: white !important;
     } */
