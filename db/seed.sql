@@ -49,7 +49,7 @@ VALUES (
     11,
     'display',
     'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1631629853-screenshot-2021-09-14-at-15-29-15-1631629801.png?crop=0.684xw:0.842xh;0.131xw,0.0651xh&resize=768:*',
-    'excellent',
+    'Excellent',
     2
 );
 
@@ -62,7 +62,7 @@ VALUES (
     10,
     'for sale',
     'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1631629853-screenshot-2021-09-14-at-15-29-15-1631629801.png?crop=0.684xw:0.842xh;0.131xw,0.0651xh&resize=768:*',
-    'great',
+    'Great',
     1
 );
 
@@ -75,7 +75,7 @@ VALUES (
     10,
     'display',
     'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1631627063-ldwaffle-bv0073-400-blue-1-1000x1000-1631627029.jpg?crop=1xw:1xh;center,top&resize=768:*',
-    'excellent',
+    'Excellent',
     2
 );
 
@@ -89,7 +89,7 @@ VALUES (
     8,
     'display',
     'https://cdn.pixabay.com/photo/2016/11/18/22/29/footwear-1837170_960_720.jpg',
-    'excellent',
+    'Excellent',
     3
 );
 
@@ -103,7 +103,7 @@ VALUES (
     8.5,
     'display',
     'https://cdn.pixabay.com/photo/2016/11/19/11/24/puma-1838735_960_720.jpg',
-    'good',
+    'Good',
     1
 );
 
@@ -117,7 +117,7 @@ VALUES (
     9.5,
     'for sale',
     'https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg',
-    'fair',
+    'Fair',
     2
 );
 
