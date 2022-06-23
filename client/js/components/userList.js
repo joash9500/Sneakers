@@ -10,6 +10,7 @@ function renderUsers() {
 
         userData = resp.data
         userData.forEach(elm => {
+<<<<<<< HEAD
             const userName = document.createElement('h3')
             userName.innerText = elm.name
             const userLocation = document.createElement('p')
@@ -36,6 +37,45 @@ function renderUsers() {
 
             htmlContent.append(userName, userPhoto, userLocation, userSize, deleteUserButton, editUserButton)
             htmlContent2.replaceChildren()
+=======
+            //master user_div
+            const user_div = document.createElement('div')
+            user_div.classList.add('card')
+            user_div.style.width = '25rem'
+            //2nd master div
+            const user_div_body = document.createElement('div')
+            user_div_body.classList.add('card-body')
+            //children of 2nd master div
+                const userName = document.createElement('h3')
+                userName.innerText = elm.name
+                const userLocation = document.createElement('p')
+                userLocation.innerText = 'Location: ' + elm.location
+                const userSize = document.createElement('p')
+                userSize.innerText = 'Ideal shoe size: ' + elm.ideal_size
+                const userPhoto = document.createElement('img')
+                userPhoto.src = elm.photo_path
+                userPhoto.classList.add('img-fluid')
+
+                //admin functionality - delete and edit users
+                //delete user button
+                const deleteUserButton = document.createElement('button')
+                deleteUserButton.innerText = 'Delete User'
+                deleteUserButton.addEventListener('click', () => {
+                    deleteUsers(elm.id)
+                })
+
+                //edit user button (renders an edit user form)
+                const editUserButton = document.createElement('button')
+                editUserButton.innerText = 'Edit'
+                editUserButton.addEventListener('click', () => {
+                    editUsers(elm.id)
+                })
+                //append children to 2nd master div
+                user_div_body.append(userName, userLocation, userSize, userPhoto, deleteUserButton, editUserButton)
+                
+                user_div.appendChild(user_div_body)
+                htmlContent.appendChild(user_div)
+>>>>>>> 3b52fb2dbdd44a7ee9caffd539fbe10032002e05
         })
 
     })
@@ -55,6 +95,7 @@ function editUsers(id) {
     const htmlContent = document.getElementById('content')
     const updateForm = document.createElement('form')
     updateForm.innerHTML = `
+
             <h1>Update User</h1>
         <form>
             <div class="form-row">
@@ -106,6 +147,26 @@ function editUsers(id) {
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
     </form> 
+
+
+        <h1>Update User</h1>
+        <label for="email">Email: </label>
+        <input type="email" name="email"><br>
+        <label for="name">New Name: </label>
+        <input type="text" name="name"><br>
+        <label for="username">New Username: </label>
+        <input type="text" name="username"><br>
+        <label for="location">New Location: </label>
+        <input type="text" name="location"><br>
+        <label for="shoe_size">Ideal Shoe size: </label>
+        <input type="number" name="shoe_size"><br>
+        <label for="photo_URL">Photo URL: </label>
+        <input type="url" name="photo_URL"><br>
+        <label for="instagram_URL">Instagram URL: </label>
+        <input type="url" name="instagram_URL"><br>
+        <button type="submit">Save</button>
+
+
     `
     htmlContent.replaceChildren(updateForm)
 

@@ -25,10 +25,11 @@ router.post('/api/session', (req, res) => {
         } else if (result.email == email) {
             let password_check = isValidPassword(password, result.password_hash)
             if (password_check) {
-                //set session with user's id, name and email
+                //set session with user's id, name and email and location
                 req.session.user_id = result.id
                 req.session.name = result.name
                 req.session.email = result.email
+                req.session.location = result.location
 
                 res.json({session: req.session})
             } else  {
@@ -46,7 +47,9 @@ router.post('/api/session', (req, res) => {
 router.get('/api/session', (req, res) => {
     let name = req.session.name
     let email = req.session.email
-    res.json({ name, email })
+    let id = req.session.user_id
+    let location = req.session.location
+    res.json({ id, name, email, location})
 })
 
 //delete session for log out

@@ -7,9 +7,16 @@ const router = express.Router()
 router.get('/api/sneakers', (req, res) => {
     const sql = "SELECT * FROM sneakers;"
     db.query(sql).then((dbResult) => {
-
         res.json(dbResult.rows)
 
+    })
+})
+
+router.get('/api/sneakers/:id', (req, res) => { //get sneakers for user with id
+    let users_id = req.params.id
+    const sql = "SELECT * FROM sneakers WHERE users_id = $1"
+    db.query(sql, [users_id]).then((dbResult) => {
+        res.json(dbResult.rows)
     })
 })
 
@@ -21,7 +28,10 @@ router.post('/api/sneakers', (req, res) => {
     let size = req.body.size;
     let type = req.body.type;
     let image_path = req.body.image_path;
-    let condition = req.body.condition
+    let condition = req.body.condition;
+    let users_id = req.body.user_id
+
+    
     if (!name) {
         res.status(400).json({ message: 'name is required' })
         return
@@ -33,12 +43,11 @@ router.post('/api/sneakers', (req, res) => {
         return 
     }
     const sql = `
-    INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`
-    db.query(sql, [name, description, brand, purchase_place, size, type, image_path, condition])
-
+    INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`
+    db.query(sql, [name, description, brand, purchase_place, size, type, image_path, condition, users_id])
         .then(dbRes => {
-
+            console.log(dbRes)
             res.json({ success: true })
         })
 })
