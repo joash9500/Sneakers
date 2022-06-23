@@ -1,11 +1,9 @@
 // renders filter side bar
 
 function renderFilter() {
-    console.log('running')
     const filterMenu = document.querySelector('#side-bar')
     const searchForm = document.createElement('form')
     const filterForm = document.createElement('form')
-    filterMenu.style.display = 'inline-block'
     searchForm.innerHTML = `
         <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
@@ -24,8 +22,10 @@ function renderFilter() {
                 page = document.getElementById('content')
                 page.innerHTML = ''
                 for (index in sneakers) {
+                    // searches for both the name and brand of sneakers in the DB
+                    let sneakersBrandLowerCase = sneakers[index].brand.toLowerCase()
                     let sneakersLowerCase = sneakers[index].name.toLowerCase()
-                    if (sneakersLowerCase.includes(searchLowerCase)) {
+                    if (sneakersLowerCase.includes(searchLowerCase)  || sneakersBrandLowerCase.includes(searchLowerCase)) {
                         const sneakerItem = document.createElement('div')
                         sneakerItem.innerHTML =
                             `
@@ -52,63 +52,44 @@ function renderFilter() {
             <div class="card-body">
             <h5 class="card-title">Brand</h5>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="nike" name="nike">
+                <input class="form-check-input" type="checkbox" id="nike" value="Nike" name="brand">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Nike</label>
             </div>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="adidas" name="adidas">
+                <input class="form-check-input" type="checkbox" id="adidas" value="Adidas" name="brand">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Adidas</label>
             </div>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="puma" name="puma">
+                <input class="form-check-input" type="checkbox" id="puma" value="Puma" name="brand">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Puma</label>
             </div>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="balenciaga" name="balenciaga">
+                <input class="form-check-input" type="checkbox" id="balenciaga" value="Balenciaga" name="brand">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Balenciaga</label>
             </div>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="new balance" name="new balance">
+                <input class="form-check-input" type="checkbox" id="new balance" value="New Balance" name="brand">
                 <label class="form-check-label" for="flexSwitchCheckDefault">New Balance</label>
             </div>
             </div>
-        </div>
-
-        <div class="card" style="width: 25rem">
-            <div class="card-body">
-            <h5 class="card-title">Popular</h5>
-                <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="air jordan" name="air jordan">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Air Jordan</label>
-            </div>
-                <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="yeezy" name="yeezy">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Yeezy</label>
-            </div>
-                <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="air max" name="air max">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Air Max</label>
-            </div>
-            </div>
-        </div>
 
         <div class="card">
             <div class="card-body" style="width: 25rem">
             <h5 class="card-title">Condition</h5>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="like new" name="like new">
+                <input class="form-check-input" type="checkbox" value="Like New" id="Like new" name="condition">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Like New</label>
             </div>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="excellent" name="excellent">
+                <input class="form-check-input" type="checkbox" value="Excellent" id="excellent" name="condition">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Excellent</label>
             </div>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="good" name="good">
+                <input class="form-check-input" type="checkbox" value="Good" id="good" name="condition">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Good</label>
             </div>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="fair" name="fair">
+                <input class="form-check-input" type="checkbox" value="Fair" id="fair" name="condition">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Fair</label>
             </div>
             </div>
@@ -118,58 +99,58 @@ function renderFilter() {
             <div class="card-body">
             <h5 class="card-title">Size</h5>
             <label for="size"></label>
-            <input type="range" id="send" min="0" max="15" step='0.5' oninput="result.value = send.value"name="size"><br> 
-            <input type="text" id="result" value=""> <br> <br>
+            <input type="range" id="send" min="0" max="15" step='0.5' value="0" oninput="result.value = send.value"  ><br> 
+            <input type="text" class="w-25 p-1 text-center" name='size' id="result" value="0"> <br> <br>
             </div>
-        </div>        
+        </div>   
+        <button>Filter</button> 
+        <label for="clear"></label>
+        <input type="reset" value="Clear" name="clear"><br>
+     
   `
     filterForm.addEventListener('submit', (event) => {
         event.preventDefault()
         const formData = new FormData(filterForm)
-        // displays if brand is checked
-        let nikeOn = formData.get('nike')
-        let adidasOn = formData.get('adidas')
-        let pumaOn = formData.get('puma')
-        let newBalanceOn = formData.get('new balance')
-        let balenciagaOn = formData.get('balenciaga')
 
-        let brandsChecked = {nike: nikeOn, adidas: adidasOn, puma: pumaOn, newBalance: newBalanceOn, balenciaga: balenciagaOn}
+        // produce an object with each filter name as the key and as a value a list of checked values
+        let filters = {}
 
-        let nike = document.getElementById('nike').name
-        let adidas = document.getElementById('adidas').name
-        let puma = document.getElementById('puma').name
-        let newBalance = document.getElementById('new balance').name
-        let balenciaga = document.getElementById('balenciaga').name
-
-        let brands = [nike, adidas, puma, newBalance, balenciaga]
-
-        let airJordanOn = formData.get('air jordan')
-        let yeezyOn = formData.get('yeezy')
-        let airMaxOn = formData.get('air max')
-
-        popularChecked = [airJordanOn, yeezyOn, airMaxOn]
-
-        let airJordan = document.getElementById('air jordan').name
-        let yeezy = document.getElementById('yeezy').name
-        let airMax = document.getElementById('air max').name
-
-        popular = [airJordan, yeezy, airMax]
-
+        formData.forEach((value, key) => {
+            // pushes in an array and/or adds a value to the array
+            if (filters[key]) {
+                filters[key].push(value)
+              } else {
+                filters[key] = [value] // New array with value in it
+              }
+            if (filters[key] == "0" ) {
+                delete filters[key]
+                    }
+            console.log(value, key)
+        });
+        
+        console.log(filters)
         axios.get('/api/sneakers')
             .then((response) => {
                 const sneakers = response.data
                 page = document.getElementById('content')
                 page.innerHTML = ''
 
-
+                // checks if filter options are in the sneakers table
                 for (index in sneakers) {
-                    let sneakersBrandLowerCase = sneakers[index].brand.toLowerCase()
-                    for (brand of brands) {
-                        
-                        if (sneakersBrandLowerCase.includes(brand) && brandsChecked[brand] == 'on') {
-                            const sneakerItem = document.createElement('div')
-                            sneakerItem.innerHTML =
-                                `
+                    let results = []
+                    for (filter in filters) {
+                        let values = filters[filter]
+                        let result = values.includes(sneakers[index][filter])
+                        results.push(result)
+                        console.log(result)
+                        console.log(sneakers[index][filter])
+                    }
+                    // check if all filters can produce an item
+                    let allFiltersMatch = results.every(filterMatches => filterMatches == true)
+                    if (allFiltersMatch) {
+                        const sneakerItem = document.createElement('div')
+                        sneakerItem.innerHTML =
+                            `
                         <div class="card" style="width: 25rem">
                         <img class="card-img-top" src="${sneakers[index].image_path}">
                         <div class="card-body">
@@ -183,21 +164,19 @@ function renderFilter() {
                         </div>
                         </div>
                         `
-                            page.appendChild(sneakerItem)
-                        }
-
-
+                        page.appendChild(sneakerItem)
                     }
                 }
             })
     })
-    filterMenu.appendChild(searchForm)
-    filterMenu.appendChild(filterForm)
+    
+    filterMenu.replaceChildren(searchForm, filterForm)
 }
 
 function renderSneakers() {
-
-    renderFilter() //run function to generate a filter form on the side bar
+    renderFilter()
+    const filterMenu = document.querySelector('#side-bar')
+    filterMenu.style.display = 'inline-block'
     axios
         .get("/api/sneakers")
         .then((response) => {
@@ -230,6 +209,8 @@ function renderSneakers() {
 
 // adds sneakers 
 function renderAddSneakerForm() {
+    const filterMenu = document.querySelector('#side-bar')
+    filterMenu.style.display = 'none'
     const page = document.getElementById('content')
     const form = document.createElement('form')
     form.innerHTML = `

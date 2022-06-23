@@ -57,7 +57,7 @@ INSERT INTO sneakers (name, description, brand, purchase_place, size, type, imag
 VALUES (
     'Adidas Yeezy 350 Version 1 Turtle Doves',
     'addidas with turtles',
-    'Addidas',
+    'Adidas',
     'https://www.adidas.com.au/',
     10,
     'for sale',
@@ -119,6 +119,86 @@ VALUES (
     'https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg',
     'Fair',
     2
+);
+
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'Air Jordan 1 Retro High OG Stage Haze',
+    'The Air Jordan 1 Retro High OG ‘Stage Haze’ features neutral tones on the foundational sneaker that started it all.',
+    'Nike',
+    'goat.com',
+    7,
+    'display',
+    'https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/072/682/080/original/895937_01.jpg.jpeg?action=crop&width=950',
+    'Like New',
+    3
+);
+
+
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'Air Force 1 07 Triple White',
+    'Modern twist on an old classic',
+    'Nike',
+    'Nike.com.au',
+    9.5,
+    'display',
+    'https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/048/340/059/original/712867_01.jpg.jpeg?action=crop&width=950',
+    'Excellent',
+    1
+);
+
+
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'J. Cole x RS-Dreamer E-Line',
+    'Nodding to the rapper’s extensive ties to New York City, the J. Cole x PUMA RS-Dreamer ‘E-Line’ gets its name from the subway service that runs from Jamaica, Queens, to Lower Manhattan.',
+    'Puma',
+    'footlocker.com.au',
+    11.5,
+    'for sale',
+    'https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/065/467/197/original/818061_01.jpg.jpeg?action=crop&width=950',
+    'Fair',
+    2
+);
+
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'MB.01 Lo UFO',
+    'Unique and awesome design influenced by Roswell',
+    'Puma',
+    'goat.com',
+    13.5,
+    'display',
+    'https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/074/024/645/original/954578_08.jpg.jpeg?action=crop&width=1250',
+    'Fair',
+    2
+);
+
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'Yeezy Foam Runner ',
+    'The adidas Yeezy Foam Runner ‘Desert Sand’ showcases a tonal beige finish throughout the molded one-piece build, crafted from a unique blend of lightweight EVA and harvested algae. ',
+    'Adidas',
+    'https://www.adidas.com.au/',
+    10,
+    'for sale',
+    'https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/073/719/899/original/955441_01.jpg.jpeg?action=crop&width=950',
+    'Great',
+    1
+);
+
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'Adidas Forum Low',
+    'White Royal Blue ',
+    'Adidas',
+    'https://www.adidas.com.au/',
+    10,
+    'for sale',
+    'https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/055/890/481/original/742912_01.jpg.jpeg?action=crop&width=950',
+    'Like New',
+    1
 );
 
 INSERT INTO listings (sneaker_id, users_id, listing_date, location, selling_price) 
