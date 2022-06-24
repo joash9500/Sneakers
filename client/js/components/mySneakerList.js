@@ -62,17 +62,25 @@ function renderMySneakers() {
 function addListing(sneaker_id) {
     console.log('add listings page is running')
     let page = document.getElementById('content')
+    let filter = document.getElementById('side-bar')
     const form = document.createElement('form')
     form.innerHTML = `
-    <label for="listing_date">Listing Date: (YYYY-MM-DD)</label><br>
-    <input type="text" name="listing_date"><br>
-    <label for="selling_price">Price: </label><br>
-    <input type="number" name="selling_price"> <br>
-
-    <button type="submit">Add your item</button> 
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+            <label for="listing_date">Listing Date (YYYY-MM-DD)</label>
+            <input type="text" name="listing_date" class="form-control">
+            </div>
+            <div class="form-group col-md-12">
+            <label for="selling_price">Price</label>
+            <input type="number" name="selling_price" class="form-control">
+            </div>
+        </div>
+            <button type="submit" class="btn btn-primary">Add your item</button>
+    </form>    
     `
     page.replaceChildren(form)
-
+    filter.replaceChildren()
     form.addEventListener('submit', () => {
 
         const formData = new FormData(form)
