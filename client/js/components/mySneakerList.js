@@ -53,24 +53,6 @@ function renderMySneakers() {
                 sneakerItem_body.append(sneakerImg, sneakerTitle, brand, purchasePlace, sneakerSize, sneakerType, sneakerCondition, addListingButton)
                 sneakerItem.appendChild(sneakerItem_body)
                 page.appendChild(sneakerItem)
-
-                // sneakerItem.innerHTML =
-                //     `
-                //     <div class="card" style="width: 25rem">
-                //     <img class="card-img-top" src="${sneaker.image_path}">
-                //     <div class="card-body">
-                //     <h5 class="card-title">${sneaker.name}</h5>
-                //     <p><strong>Description:</strong> ${sneaker.description}</p>
-                //     <p><strong>Brand:</strong> ${sneaker.brand}</p>
-                //     <p><strong>Purchase Place:</strong> ${sneaker.purchase_place}</p>
-                //     <p><strong>Size:</strong> ${sneaker.size}</p>
-                //     <p><strong>Type:</strong> ${sneaker.type}</p>
-                //     <p><strong>Condition:</strong> ${sneaker.condition}</p>
-
-                //     </div>
-                //     `
-
-
             }
         })
         

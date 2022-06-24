@@ -17,7 +17,7 @@ function renderLogin() {
                 <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <button type="submit" class="btn btn-primary">Sign In</button>
         </form>
     `
 
