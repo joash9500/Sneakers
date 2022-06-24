@@ -51,49 +51,50 @@ function renderFilter() {
     filterForm.innerHTML = `
 
         <div class="card" style="width: 25rem">
-            <div class="card-body">
-            <h5 class="card-title">Brand</h5>
-                <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="nike" value="Nike" name="brand">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Nike</label>
-            </div>
-                <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="adidas" value="Adidas" name="brand">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Adidas</label>
-            </div>
-                <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="puma" value="Puma" name="brand">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Puma</label>
-            </div>
-                <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="balenciaga" value="Balenciaga" name="brand">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Balenciaga</label>
-            </div>
-                <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="new balance" value="New Balance" name="brand">
-                <label class="form-check-label" for="flexSwitchCheckDefault">New Balance</label>
-            </div>
-            </div>
-
-        <div class="card">
             <div class="card-body" style="width: 25rem">
-            <h5 class="card-title">Condition</h5>
+                <h5 class="card-title">Brand</h5>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" value="Like New" id="Like new" name="condition">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Like New</label>
-            </div>
+                    <input class="form-check-input" type="checkbox" id="nike" value="Nike" name="brand">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Nike</label>
+                </div>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" value="Excellent" id="excellent" name="condition">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Excellent</label>
-            </div>
+                    <input class="form-check-input" type="checkbox" id="adidas" value="Adidas" name="brand">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Adidas</label>
+                </div>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" value="Good" id="good" name="condition">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Good</label>
-            </div>
+                    <input class="form-check-input" type="checkbox" id="puma" value="Puma" name="brand">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Puma</label>
+                </div>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" value="Fair" id="fair" name="condition">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Fair</label>
+                    <input class="form-check-input" type="checkbox" id="balenciaga" value="Balenciaga" name="brand">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Balenciaga</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="new balance" value="New Balance" name="brand">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">New Balance</label>
+                </div>
             </div>
+        </div>
+
+        <div class="card" style="width: 25rem">
+            <div class="card-body" style="width: 25rem">
+                <h5 class="card-title">Condition</h5>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" value="Like New" id="Like new" name="condition">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Like New</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" value="Excellent" id="excellent" name="condition">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Excellent</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" value="Good" id="good" name="condition">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Good</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" value="Fair" id="fair" name="condition">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Fair</label>
+                </div>
             </div>
         </div>
         
@@ -185,27 +186,31 @@ function renderSneakers() {
         .get("/api/sneakers")
         .then((response) => {
             const sneakers = response.data;
-            page = document.getElementById('content')
+            const page = document.getElementById('content')
             page.innerHTML = ''
+            const sneakerContainer = document.createElement('div')
+            sneakerContainer.classList.add('card-group')
             for (index in sneakers) {
                 const sneakerItem = document.createElement('div')
                 sneakerItem.innerHTML =
                     `
-            <div class="card" style="width: 25rem">
-                    <img class="card-img-top" src="${sneakers[index].image_path}">
-                <div class="card-body">
-                    <h5 class="card-title">${sneakers[index].name}</h5>
-                    <p><strong>Description:</strong> ${sneakers[index].description}</p>
-                    <p><strong>Brand:</strong> ${sneakers[index].brand}</p>
-                    <p><strong>Purchase Place:</strong> ${sneakers[index].purchase_place}</p>
-                    <p><strong>Size:</strong> ${sneakers[index].size}</p>
-                    <p><strong>Type:</strong> ${sneakers[index].type}</p>
-                    <p><strong>Condition:</strong> ${sneakers[index].condition}</p>
+                <div class="card" style="width: 25rem">
+                        <img class="card-img-top img-fluid" src="${sneakers[index].image_path}">
+                    <div class="card-body">
+                        <h5 class="card-title">${sneakers[index].name}</h5>
+                        <p><strong>Description:</strong> ${sneakers[index].description}</p>
+                        <p><strong>Brand:</strong> ${sneakers[index].brand}</p>
+                        <p><strong>Purchase Place:</strong> ${sneakers[index].purchase_place}</p>
+                        <p><strong>Size:</strong> ${sneakers[index].size}</p>
+                        <p><strong>Type:</strong> ${sneakers[index].type}</p>
+                        <p><strong>Condition:</strong> ${sneakers[index].condition}</p>
+                    </div>
                 </div>
-            </div>
+            
             `
-                page.appendChild(sneakerItem)
+                sneakerContainer.appendChild(sneakerItem)
             }
+            page.appendChild(sneakerContainer)
         });
 }
 // adds sneakers 

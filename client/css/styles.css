@@ -3,9 +3,10 @@
     font-family: 'Open Sans', sans-serif;
   }
 
-  .card {
-    display:inline-block;
-  }
+.card {
+  display:inline-block;
+  height: 100%;
+}
 
 
   .form-switch {
@@ -57,6 +58,15 @@ a {
 }
 input:focus {
   outline: none;
+}
+
+.img-same {
+  height: 300px;
+  width: 100%;
+}
+
+.button {
+  margin: 5px;
 }
 
 /* .side-bar > form > div.card {

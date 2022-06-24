@@ -4,9 +4,6 @@ function renderUsers() {
 
     axios.get('/api/users').then((resp) => {
         htmlContent.innerHTML = ''
-        const title = document.createElement('h1')
-        title.innerText = 'Our Members'
-        htmlContent.appendChild(title)
 
         userData = resp.data
         userData.forEach(elm => {
@@ -26,12 +23,13 @@ function renderUsers() {
                 userSize.innerText = 'Ideal shoe size: ' + elm.ideal_size
                 const userPhoto = document.createElement('img')
                 userPhoto.src = elm.photo_path
-                userPhoto.classList.add('img-fluid')
+                userPhoto.classList.add('img-fluid', 'img-same')
 
                 //admin functionality - delete and edit users
                 //delete user button
                 const deleteUserButton = document.createElement('button')
                 deleteUserButton.innerText = 'Delete User'
+                deleteUserButton.classList.add('button')
                 deleteUserButton.addEventListener('click', () => {
                     deleteUsers(elm.id)
                 })
@@ -39,12 +37,12 @@ function renderUsers() {
                 //edit user button (renders an edit user form)
                 const editUserButton = document.createElement('button')
                 editUserButton.innerText = 'Edit'
+                editUserButton.classList.add('button')
                 editUserButton.addEventListener('click', () => {
                     editUsers(elm.id)
                 })
                 //append children to 2nd master div
                 user_div_body.append(userName, userLocation, userSize, userPhoto, deleteUserButton, editUserButton)
-                
                 user_div.appendChild(user_div_body)
                 htmlContent.appendChild(user_div)
         })
@@ -67,34 +65,30 @@ function editUsers(id) {
     const updateForm = document.createElement('form')
     updateForm.innerHTML = `
 
-            <h1>Update User</h1>
+        <h1>Update User</h1>
         <form>
             <div class="form-row">
                 <div class="form-group col-md-12">
                 <label for="email">Email</label>
                 <input type="email" name="email" class="form-control" placeholder="Email">
                 </div>
-                <div class="form-group col-md-12">
-                <label for="password">Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Password">
-                </div>
             </div>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="name" name="name" class="form-control" placeholder="Name">
+                <input type="text" name="name" class="form-control" placeholder="Name">
             </div>
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="username" name="username" class="form-control" placeholder="Username">
+                <input type="text" name="username" class="form-control" placeholder="Username">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                 <label for="location">Location (City)</label>
                 <input type="location" name="location" class="form-control" placeholder="Location (City)">
-                </div>
-                <div class="form-group col-md-12">
+            </div>
+            <div class="form-group col-md-12">
                 <label for="shoe_size">Shoe Size</label>
-                <select type="shoe_size" name="shoe_size" class="form-control">
+                <select type="number" name="shoe_size" class="form-control">
                     <option selected>Choose...</option>
                     <option>7</option>
                     <option>8</option>
@@ -106,37 +100,18 @@ function editUsers(id) {
                     <option>14</option>
                     <option>15</option>
                 </select>
-                </div>
+            </div>
                 <div class="form-group col-md-12">
                 <label for="photo_URL">Photo (url)</label>
-                <input type="photo_URL" name="photo_URL" class="form-control">
+                <input type="url" name="photo_URL" class="form-control">
                 </div>
                 <div class="form-group col-md-12">
                 <label for="instagram_URL">Instagram (url)</label>
-                <input type="instagram_URL" name="instagram_URL" class="form-control">
+                <input type="url" name="instagram_URL" class="form-control">
                 </div>    
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
-    </form> 
-
-
-        <h1>Update User</h1>
-        <label for="email">Email: </label>
-        <input type="email" name="email"><br>
-        <label for="name">New Name: </label>
-        <input type="text" name="name"><br>
-        <label for="username">New Username: </label>
-        <input type="text" name="username"><br>
-        <label for="location">New Location: </label>
-        <input type="text" name="location"><br>
-        <label for="shoe_size">Ideal Shoe size: </label>
-        <input type="number" name="shoe_size"><br>
-        <label for="photo_URL">Photo URL: </label>
-        <input type="url" name="photo_URL"><br>
-        <label for="instagram_URL">Instagram URL: </label>
-        <input type="url" name="instagram_URL"><br>
-        <button type="submit">Save</button>
-
+        </form> 
 
     `
     htmlContent.replaceChildren(updateForm)
