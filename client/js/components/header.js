@@ -31,7 +31,8 @@ function renderHeader() {
             </li>
         </ul>
     </div>
-
+    <div id=searchBox> 
+    </div> 
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
