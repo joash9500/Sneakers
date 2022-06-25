@@ -1,7 +1,6 @@
-console.log('login page is rendering')
-
 function renderLogin() {
-
+    const filterMenu = document.querySelector('#side-bar')
+    filterMenu.style.display = 'inline-block'
     const htmlContent = document.getElementById('content')
     const htmlContent2 = document.getElementById('side-bar')
     const form = document.createElement('form')

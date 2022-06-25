@@ -1,6 +1,6 @@
 function renderMySneakers() {
-    console.log('mySneakers page is rendering')
-    
+    const filterMenu = document.querySelector('#side-bar')
+    filterMenu.style.display = 'none'
     axios.get('/api/session')
     .then((response) => {
 

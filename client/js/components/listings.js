@@ -1,6 +1,8 @@
 // renders all sneakers for sale 
 
 function renderListings() {
+    const filterMenu = document.querySelector('#side-bar')
+    filterMenu.style.display = 'inline-block'
     axios
         .get("/api/listings")
         .then((response) => {
