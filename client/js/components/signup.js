@@ -6,6 +6,7 @@ function renderSignup() {
     const htmlContent = document.getElementById('content')
     const htmlContent2 = document.getElementById('side-bar')
     const form = document.createElement('form')
+    form.classList.add("addsneaker")
     form.innerHTML = `
         <form>
             <div class="form-row">
