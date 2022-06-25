@@ -5,11 +5,12 @@ function renderUsers() {
     axios.get('/api/users').then((resp) => {
         htmlContent.innerHTML = ''
 
+
         userData = resp.data
         userData.forEach(elm => {
             //master user_div
             const user_div = document.createElement('div')
-            user_div.classList.add('card')
+            user_div.classList.add('card', 'h-100')
             user_div.style.width = '25rem'
             //2nd master div
             const user_div_body = document.createElement('div')

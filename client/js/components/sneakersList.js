@@ -194,7 +194,7 @@ function renderSneakers() {
                 const sneakerItem = document.createElement('div')
                 sneakerItem.innerHTML =
                     `
-                <div class="card" style="width: 25rem">
+                <div class="card h-100" style="width: 25rem">
                         <img class="card-img-top img-fluid" src="${sneakers[index].image_path}">
                     <div class="card-body">
                         <h5 class="card-title">${sneakers[index].name}</h5>

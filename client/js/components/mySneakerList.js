@@ -1,14 +1,21 @@
 function renderMySneakers() {
     console.log('mySneakers page is rendering')
-    let page = document.getElementById('content')
+    
     axios.get('/api/session')
     .then((response) => {
-        page.innerHTML = ''
+
+
         const userData = response.data; //get session data 
         // console.log(userData.email, userData.id, userData.name, userData.location)
         const user_id = userData.id
+
         axios.get(`/api/sneakers/${user_id}`)
         .then((response) => {
+            //container div
+            // const sneakerContainer = document.createElement('div')
+            // sneakerContainer.classList.add('card-group')
+            const page = document.getElementById('content')
+            page.innerHTML = ''
 
             const userSneakerData = response.data //returns an array of sneaker objects
             for (const sneaker of userSneakerData) {
@@ -22,7 +29,7 @@ function renderMySneakers() {
                 //children of 2nd master div
                 const sneakerImg = document.createElement('img')
                 sneakerImg.src = sneaker.image_path
-                sneakerImg.classList.add('img-fluid')
+                sneakerImg.classList.add('img-fluid', 'img-same')
 
                 const sneakerTitle = document.createElement('h5')
                 sneakerTitle.classList.add('card-title')
@@ -54,6 +61,7 @@ function renderMySneakers() {
                 sneakerItem.appendChild(sneakerItem_body)
                 page.appendChild(sneakerItem)
             }
+           
         })
         
     })

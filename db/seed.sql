@@ -30,7 +30,7 @@ VALUES (
 INSERT INTO users (name, email, password_hash, username, photo_path, location, ideal_size, instagram) 
 VALUES (
     'Joash Example', 
-    'rick@example.com', 
+    'joash@example.com', 
     '$2b$12$UlH7q.ty83TzSoTj1v64zeTUqmmAIjzBcdeztHxuC3daZwbHghNRW',
     'joash123',
     'https://images.pexels.com/photos/333523/pexels-photo-333523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -214,6 +214,45 @@ VALUES (
     3
 );
 
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'Air Jordan Retro XV 2015',
+    'Retro Air Jordans',
+    'Nike',
+    'JD sports',
+    10,
+    'for sale',
+    'https://www.jordanwinery.com/wp-content/uploads/2019/03/2019-3-26-Air-Jordan-Jordan-Cabernet-Wine-Sneakers-Dropping-April-1-Photos-WEB-SIZE-2613-1.jpg',
+    'Good',
+    3
+);
+
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'Porsche 912 Limited Edition Sneakers',
+    'Porsche limited editions',
+    'Porsche',
+    'Private Seller',
+    10,
+    'for sale',
+    'https://newsroom.porsche.com/.imaging/mte/porsche-templating-theme/image_1080x624/dam/pnr/2020/products/Porsche-Design-X-Sonra/gallery/b-SONRA_PORSCHEDESIGN_On_Feet_Jeans1_Foto_Kane_Holz-scaled.jpg/jcr:content/b-SONRA_PORSCHEDESIGN_On_Feet_Jeans1_Foto_Kane_Holz-scaled.jpg',
+    'Like New',
+    3
+);
+
+INSERT INTO sneakers (name, description, brand, purchase_place, size, type, image_path, condition, users_id)
+VALUES (
+    'Nike Air Max 1 SP',
+    'Limited edition Nikes',
+    'Nike',
+    'Private Seller',
+    12,
+    'display',
+    'https://ybiu43xnnr-flywheel.netdna-ssl.com/wp-content/uploads/2013/07/616169-300-r1.jpg',
+    'Like New',
+    1
+);
+
 INSERT INTO listings (sneaker_id, users_id, listing_date, location, selling_price) 
 VALUES (
     1,
@@ -270,6 +309,32 @@ VALUES (
     200
 );
 
+INSERT INTO listings (sneaker_id, users_id, listing_date, location, selling_price) 
+VALUES (
+    7,
+    3,
+    '2022-06-25',
+    'Perth',
+    2000
+);
+
+INSERT INTO listings (sneaker_id, users_id, listing_date, location, selling_price) 
+VALUES (
+    8,
+    2,
+    '2022-03-25',
+    'Adelaide',
+    1200
+);
+
+INSERT INTO listings (sneaker_id, users_id, listing_date, location, selling_price) 
+VALUES (
+    9,
+    1,
+    '2022-02-25',
+    'Sydney',
+    500
+);
 
 
 
