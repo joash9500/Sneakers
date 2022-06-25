@@ -106,9 +106,11 @@ function renderFilter() {
             <input type="text" class="w-25 p-1 text-center" name='size' id="result" value="0"> <br> <br>
             </div>
         </div>   
+        <div>
         <button>Filter</button> 
         <label for="clear"></label>
         <input type="reset" value="Clear" name="clear"><br>
+        </div>
      
   `
     filterForm.addEventListener('submit', (event) => {
@@ -173,8 +175,8 @@ function renderFilter() {
             })
     })
    
-    const navbar = document.getElementById('navbarNav')
-        navbar.append(searchForm);
+    const navbar = document.getElementById('searchBox')
+        navbar.replaceChildren(searchForm);
 
     filterMenu.replaceChildren(filterForm)
 }
@@ -219,7 +221,7 @@ function renderAddSneakerForm() {
     filterMenu.style.display = 'none'
     const page = document.getElementById('content')
     const form = document.createElement('form')
-    form.innerHTML = `
+    form.innerHTML = ` 
     <label for="name">Name: </label><br>
     <input type="text" name="name"> <br>
     <label for="description">Description: </label><br>
