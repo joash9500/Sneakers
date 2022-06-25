@@ -1,7 +1,8 @@
 function renderUsers() {
     const htmlContent = document.getElementById('content')
     const htmlContent2 = document.getElementById('side-bar')
-
+    const filterMenu = document.querySelector('#side-bar')
+    filterMenu.style.display = 'none'
     axios.get('/api/users').then((resp) => {
         htmlContent.innerHTML = ''
 

@@ -198,7 +198,7 @@ function renderSneakers() {
                     `
                 <div class="card h-100" style="width: 25rem">
                         <img class="card-img-top img-fluid" src="${sneakers[index].image_path}">
-                    <div class="card-body">
+                <div class="card-body">
                         <h5 class="card-title">${sneakers[index].name}</h5>
                         <p><strong>Description:</strong> ${sneakers[index].description}</p>
                         <p><strong>Brand:</strong> ${sneakers[index].brand}</p>

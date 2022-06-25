@@ -209,7 +209,7 @@ VALUES (
     'JD sports',
     8.5,
     'display',
-    'https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/055/890/481/original/742912_01.jpg.jpeg?action=crop&width=950',
+    'https://d3vfig6e0r0snz.cloudfront.net/rcYjnYuenaTH5vyDF/images/products/635be72a9aecf3d47bbca21bac7e622f.webp',
     'Fair',
     3
 );
