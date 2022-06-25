@@ -65,6 +65,7 @@ function deleteUsers(id) {
 function editUsers(id) {
     const htmlContent = document.getElementById('content')
     const updateForm = document.createElement('form')
+    updateForm.classList.add("addsneaker")
     updateForm.innerHTML = `
 
         <h1>Update User</h1>

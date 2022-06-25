@@ -69,6 +69,10 @@ input:focus {
   margin: 5px;
 }
 
+.addsneaker {
+  margin: 0 28%;
+}
+
 /* .side-bar > form > div.card {
   margin: 5px;
 }

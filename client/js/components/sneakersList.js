@@ -221,26 +221,40 @@ function renderAddSneakerForm() {
     filterMenu.style.display = 'none'
     const page = document.getElementById('content')
     const form = document.createElement('form')
+    form.classList.add("addsneaker")
     form.innerHTML = ` 
-    <label for="name">Name: </label><br>
-    <input type="text" name="name"> <br>
-    <label for="description">Description: </label><br>
-    <input type="text" name="description"> <br>
-    <label for="brand">Brand: </label><br>
-    <input type="text" name="brand"> <br>
-    <label for="purchase_place">Purchase location: </label><br>
-    <input type="text" name="purchase_place"> <br>
-    <label for="size">Size: </label><br>
-    <input type="number" name="size"> <br>
+    <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="name">Name</label>
+    <input type="text" name="name" class="form-control" placeholder="Name">
+    </div>
+    <div class="form-group col-md-12">
+    <label for="description">Description</label>
+    <input type="text" name="description" class="form-control" placeholder="Description">
+    </div>
+    <div class="form-group col-md-12">
+    <label for="brand">Brand</label>
+    <input type="text" name="brand" class="form-control" placeholder="Brand">
+    </div>
+    <div class="form-group col-md-12">
+    <label for="purchase_place">Purchase Place</label>
+    <input type="text" name="purchase_place" class="form-control" placeholder="Purchase Place">
+    </div>
+    <div class="form-group col-md-12">
+    <label for="size">Size</label>
+    <input type="text" name="size" class="form-control" placeholder="Size">
+    </div>
 
     <label>Type: </label><br>
     <label for="display">Display </label>
     <input type="radio" name="type" value="display">
     <label for="listing">For Sale </label>
-    <input type="radio" name="type" value="for sale"><br>
+    <input type="radio" name="type" value="for sale">
 
-    <label for="image_path">Image URL: </label><br>
-    <input type="text" name="image_path"> <br>
+    <div class="form-group col-md-12">
+    <label for="image_path">Image URL</label>
+    <input type="text" name="image_path" class="form-control" placeholder="Image">
+    </div>
 
     <label>Condition: </label><br>
     <label for="As New">As New</label>
@@ -251,8 +265,8 @@ function renderAddSneakerForm() {
     <input type="radio" name="condition" value="Good"><br>
     <label for="Fair">Fair</label>
     <input type="radio" name="condition" value="Fair"><br>
-
-    <button>Add your item</button> 
+</div>
+<button type="submit" class="btn btn-primary">Add Item</button>
     `
     page.replaceChildren(form)
     form.addEventListener('submit', event => {

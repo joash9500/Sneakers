@@ -72,6 +72,7 @@ function addListing(sneaker_id) {
     let page = document.getElementById('content')
     let filter = document.getElementById('side-bar')
     const form = document.createElement('form')
+    form.classList.add("addsneaker")
     form.innerHTML = `
     <form>
         <div class="form-row">
