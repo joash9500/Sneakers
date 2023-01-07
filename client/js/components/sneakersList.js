@@ -187,6 +187,7 @@ function renderSneakers() {
     axios
         .get("/api/sneakers")
         .then((response) => {
+            console.log(response)
             const sneakers = response.data;
             const page = document.getElementById('content')
             page.innerHTML = ''

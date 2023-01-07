@@ -21,7 +21,7 @@ router.post('/api/session', (req, res) => {
             //if email correct, check password
             //set session if password is ok otherwise return error
         if (result == undefined) {
-            res.status(400).json({message: 'password is incorrect'})
+            res.status(400).json({message: 'cannot find user'})
         } else if (result.email == email) {
             let password_check = isValidPassword(password, result.password_hash)
             if (password_check) {
